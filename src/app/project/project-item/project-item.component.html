@@ -1,1 +1,35 @@
-<p>project-item works!</p>
+<!-- Breadcrumb -->
+<!-- TODO: Valorar si funciona mejor con el título del proyecto -->
+<header>
+  <p>Pongamos algo</p>
+  <!-- Aquí irá la X para cerrar la pantalla -->
+  <!-- TODO: Añadir icono -->
+  <button (click)="closeButton($event)">Close</button>
+</header>
+
+<!-- Vídeo con el trailer -->
+<video>
+  <source src="{{ trailerUrl }}" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+<!-- Descripción del proyecto -->
+<article>
+  <section>
+    <h1>{{ name }}</h1>
+    <p>{{ year }}</p>
+  </section>
+
+  <section>
+    <p>DIR:</p>
+    <p>{{ director }}</p>
+    <p>DOP:</p>
+    <p>{{ DOP }}</p>
+    <p>Genre</p>
+    <p>{{ genre }}</p>
+  </section>
+
+  <section>
+    <a href="{{ imdbUrl }}">ImDB</a>
+  </section>
+</article>
