@@ -1,35 +1,45 @@
 <!-- Breadcrumb -->
-<!-- TODO: Valorar si funciona mejor con el título del proyecto -->
 <header>
-  <p>Pongamos algo</p>
-  <!-- Aquí irá la X para cerrar la pantalla -->
-  <!-- TODO: Añadir icono -->
-  <button (click)="closeButton($event)">Close</button>
+  <nav aria-label="Breadcrumbs" class="breadcrumbs">
+    <p>Breadcrumb</p>
+    <button class="icon-button" (click)="closeButton($event)">
+      <i class="material-symbols-outlined"> close </i>
+    </button>
+  </nav>
 </header>
 
 <!-- Vídeo con el trailer -->
+<!-- TODO: Para hacer cuando tenga los datos verdaderos -->
 <video>
-  <source src="{{ trailerUrl }}" type="video/mp4" />
+  <source src="{{ project?.trailerUrl }}" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
 
 <!-- Descripción del proyecto -->
-<article>
-  <section>
-    <h1>{{ name }}</h1>
-    <p>{{ year }}</p>
+<article class="project-info">
+  <section class="title">
+    <h1>{{ project?.name }}</h1>
+    <p>{{ project?.year }}</p>
   </section>
 
-  <section>
-    <p>DIR:</p>
-    <p>{{ director }}</p>
-    <p>DOP:</p>
-    <p>{{ DOP }}</p>
-    <p>Genre</p>
-    <p>{{ genre }}</p>
+  <section class="basic-info">
+    <ul>
+      <li>
+        <span>DIR:</span>
+        <span class="col-right">{{ project?.director }}</span>
+      </li>
+      <li>
+        <span>DOP:</span>
+        <span class="col-right">{{ project?.DOP }}</span>
+      </li>
+      <li>
+        <span>Genre</span>
+        <span class="col-right">{{ project?.genre }}</span>
+      </li>
+    </ul>
   </section>
 
-  <section>
-    <a href="{{ imdbUrl }}">ImDB</a>
+  <section class="imdb">
+    <a href="{{ project?.imdbUrl }}">ImDB</a>
   </section>
 </article>
