@@ -16,11 +16,11 @@ export class ProjectItemComponent implements OnInit {
 
   ngOnInit() {
     this.project = new Project(
-      'Proyecto 1',
+      'El otro lado',
       2024,
-      'Director 1',
-      'DOP 1',
-      'https://via.placeholder.com/150',
+      'Alberto de Toro y Javier Ruíz Caldera',
+      'Bernat Bosch',
+      'assets/project-imgs/el-otro-lado.jpeg',
       'Género 1',
       'https://www.youtube.com/watch?v=123456',
       'https://www.imdb.com/title/tt123456'
