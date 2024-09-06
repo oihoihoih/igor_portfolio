@@ -1,0 +1,6 @@
+/* TODO: Añadir los estilos para tener fondo claro */
+@import "../../../../styles.css";
+
+body {
+  background-color: var(--accent);
+}

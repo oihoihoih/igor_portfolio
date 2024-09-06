@@ -1,4 +1,58 @@
-/* You can add global styles to this file, and also import other style files */
+/* Import Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your existing code */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  --dark: #333333;
+  --light: #fbfbf4;
+  --accent: #fc8a66;
+}
+
+body {
+  background-color: var(--dark);
+  font-family: "sarvatrik-latin-variable", sans-serif;
+  color: var(--light);
+  font-size: 62.5%;
+}
+
+a {
+  font-size: 1.6rem;
+  color: var(--accent);
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+p {
+  font-size: 1.6rem;
+}
+
+.material-symbols-outlined {
+  font-size: 4.8rem;
+  color: var(--light);
+}
+/* Navegación */
+.breadcrumbs {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilo botones */
+.icon-button {
+  background: none;
+  border: none;
+  padding: none;
+  cursor: pointer;
+}
 
 * {
   margin: 0;
