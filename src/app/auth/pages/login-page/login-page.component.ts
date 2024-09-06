@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Validators from '@angular/forms'
+import { Router } from '@angular/router';
+
 import { AuthService } from '../../services/auth.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +16,8 @@ export class LoginPageComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', { validators: [Validators.required, Validators.email] }],
@@ -27,8 +32,14 @@ export class LoginPageComponent {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email, password).subscribe({
-      next: () => console.log('todo bien'),
+      next: () => this.router.navigateByUrl,
       error: (error) => {
+        // TODO: Mirar si se puede manejar el error de otra manera, para que la tipografía quede más acorde con el estilo de la aplicación
+        Swal.fire({
+          title: 'Oooops!',
+          text: 'Ha ocurrido un error con el login. El usuario o la contraseña son incorrectos',
+          icon: 'error',
+        });
         console.log({ loginError: error });
       },
     });
