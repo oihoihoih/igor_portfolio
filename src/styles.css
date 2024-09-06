@@ -16,7 +16,6 @@ html {
 }
 
 body {
-  /* background-color: var(--dark); */
   font-family: "sarvatrik-latin-variable", sans-serif;
   color: var(--light);
   font-size: 62.5%;
