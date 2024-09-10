@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // Import Validators from '@angular/forms'
 import { Router } from '@angular/router';
 
@@ -32,7 +32,7 @@ export class LoginPageComponent {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email, password).subscribe({
-      next: () => this.router.navigateByUrl,
+      next: () => this.router.navigateByUrl('/dashboard'),
       error: (error) => {
         // TODO: Mirar si se puede manejar el error de otra manera, para que la tipografía quede más acorde con el estilo de la aplicación
         Swal.fire({

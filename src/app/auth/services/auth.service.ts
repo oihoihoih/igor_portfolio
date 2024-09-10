@@ -13,7 +13,8 @@ export class AuthService {
   private _authStatus = signal<AuthStatus>(AuthStatus.checking);
 
   // Lo que se verá desde fuera
-  public authStatus = computed(() => this._authStatus);
+  public authStatus = computed(() => this._authStatus());
+  public user = computed(() => this._currentUser());
 
   constructor(private http: HttpClient) {}
 

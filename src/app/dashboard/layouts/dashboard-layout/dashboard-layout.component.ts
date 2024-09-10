@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
@@ -7,9 +7,11 @@ import { AuthService } from '../../../auth/services/auth.service';
   styleUrl: './dashboard-layout.component.css',
 })
 export class DashboardLayoutComponent {
-  constructor(private authService: AuthService) {}
+  public user = computed(() => this.authService.user());
 
-  get status() {
-    return this.authService.authStatus;
-  }
+  constructor(private authService: AuthService) {}
+  //
+  //   get status() {
+  //     return this.authService.authStatus;
+  //   }
 }
