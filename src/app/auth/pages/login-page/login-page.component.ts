@@ -20,9 +20,12 @@ export class LoginPageComponent {
     private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
-      email: ['', { validators: [Validators.required, Validators.email] }],
+      email: [
+        'hola@oihoih.es',
+        { validators: [Validators.required, Validators.email] },
+      ],
       password: [
-        '',
+        'Aceituna1',
         { validators: [Validators.required, Validators.minLength(6)] },
       ],
     });
@@ -32,7 +35,7 @@ export class LoginPageComponent {
     const { email, password } = this.loginForm.value;
 
     this.authService.login(email, password).subscribe({
-      next: () => this.router.navigateByUrl('/dashboard'),
+      next: () => this.router.navigateByUrl('/atoridashboard'),
       error: (error) => {
         // TODO: Mirar si se puede manejar el error de otra manera, para que la tipografía quede más acorde con el estilo de la aplicación
         Swal.fire({

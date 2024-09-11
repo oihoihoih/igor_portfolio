@@ -9,7 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'dashboard',
+    path: 'atoridashboard',
     // guards
     canActivate: [isAuthenticated],
     loadChildren: () =>
