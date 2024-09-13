@@ -1,7 +1,7 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { environment } from '../../../environments/environments';
-import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable, tap, throwError } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, Observable, of, tap, throwError } from 'rxjs';
 import { User, AuthStatus, LoginResponse } from '../interfaces';
 
 @Injectable({
@@ -37,5 +37,16 @@ export class AuthService {
         return throwError(() => error.error.message);
       })
     );
+  }
+
+  checkAuthStatus(): Observable<boolean> {
+    const url = `${this.baseUrl}/auth/check-token`;
+    const token = localStorage.getItem('token');
+
+    if (!token) return of(false);
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.get<User>(url, { headers });
   }
 }
