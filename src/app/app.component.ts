@@ -31,6 +31,5 @@ export class AppComponent {
         this.router.navigateByUrl('/auth/login');
         return;
     }
-    this.authService.authStatus();
   });
 }
