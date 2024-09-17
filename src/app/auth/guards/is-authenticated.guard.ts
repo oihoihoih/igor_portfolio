@@ -11,9 +11,10 @@ export const isAuthenticated: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.authStatus() === AuthStatus.authenticated) {
+    console.log('is authenticated');
     return true;
   }
 
-  router.navigateByUrl('auth/login');
+  router.navigateByUrl('/auth/login');
   return false;
 };
