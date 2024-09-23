@@ -11,10 +11,6 @@ export class DashboardLayoutComponent {
   public user = computed(() => this.authService.user());
 
   constructor(private authService: AuthService, private router: Router) {}
-  //
-  //   get status() {
-  //     return this.authService.authStatus;
-  //   }
 
   onLogout() {
     this.authService.logout();
