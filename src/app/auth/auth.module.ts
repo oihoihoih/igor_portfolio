@@ -8,6 +8,8 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 
 @NgModule({
   declarations: [LoginPageComponent, AuthLayoutComponent],
+  // TODO: Valorar si tengo que exportar LoginPageComponent y AuthLayoutComponent
+  exports: [],
   imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule],
 })
 export class AuthModule {}
