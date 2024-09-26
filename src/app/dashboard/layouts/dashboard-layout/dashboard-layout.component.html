@@ -1,12 +1,14 @@
-<header>
-  <!-- TODO: Este título tiene que ser dinámico dependiendo del apartado en el que se encuentre -->
-  <h1>Dashboard</h1>
+<section class="dashboard">
+  <header>
+    <!-- TODO: Este título tiene que ser dinámico dependiendo del apartado en el que se encuentre -->
+    <h1>Dashboard</h1>
 
-  <button (click)="onLogout()">Cerrar sesión</button>
-</header>
+    <button (click)="onLogout()">
+      <ng-icon name="heroPower"></ng-icon>
+    </button>
+  </header>
 
-<section>
-  <div>
+  <section>
     <router-outlet></router-outlet>
-  </div>
+  </section>
 </section>

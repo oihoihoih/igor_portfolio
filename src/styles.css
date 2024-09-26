@@ -3,22 +3,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Your existing code */
+:root {
+  --dark: #333333;
+  --aux-dark: #a1a1a1;
+  --light: #fbfbf4;
+  --aux-light: #dcdcdc;
+  --accent: #fc8a66;
+  font-size: 62.5%; /* (62,5/100) * 16px = 10px */
+  --font-size--small: 1.4rem;
+  --font-size--default: 1.6rem;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html {
-  --dark: #333333;
-  --light: #fbfbf4;
-  --accent: #fc8a66;
-}
 
 body {
   font-family: "sarvatrik-latin-variable", sans-serif;
+  font-size: var(--font-size--default);
+  font-variation-settings: "wght" 400;
   /* color: var(--light); */
-  font-size: 62.5%;
 }
 
 a {
@@ -52,3 +58,9 @@ p {
   padding: none;
   cursor: pointer;
 }
+
+/**********************************************
+***********************************************
+LAYOUT  
+***********************************************
+***********************************************/

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Project } from '../../model/project';
 import { environment } from '../../../environments/environments';
 
@@ -9,12 +9,13 @@ import { environment } from '../../../environments/environments';
 })
 export class DashService {
   private readonly baseUrl = environment.baseUrl;
+
   constructor(private http: HttpClient) {}
 
   getAllProjects(): Observable<Project[]> {
     const url = `${this.baseUrl}/projects`;
-    const projects = this.http.get<Project[]>(url);
-    return projects;
+
+    return this.http.get<Project[]>(url).pipe(map((res) => res));
   }
 
   getProjectById() {}

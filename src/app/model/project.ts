@@ -1,6 +1,6 @@
 export class Project {
   constructor(
-    public name: string,
+    public title: string,
     public year: number,
     public director: string,
     public DOP: string,

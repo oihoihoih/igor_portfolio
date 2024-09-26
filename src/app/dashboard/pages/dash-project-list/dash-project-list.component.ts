@@ -9,18 +9,20 @@ import { Project } from '../../../model/project';
   styleUrl: './dash-project-list.component.css',
 })
 export class DashProjectListComponent {
-  private projects: Project[] = [];
+  public projects: Project[] = [];
+  public cargando: boolean = true;
 
   constructor(private dashboardService: DashService, private router: Router) {
     this.getProjects();
   }
 
   getProjects() {
+    this.cargando = true;
     this.dashboardService.getAllProjects().subscribe((projects) => {
       console.log(projects);
+      this.cargando = false;
       this.projects = projects;
     });
-    this.printProjects();
   }
 
   printProjects() {

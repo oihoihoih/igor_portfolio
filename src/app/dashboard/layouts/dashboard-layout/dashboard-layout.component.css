@@ -1,0 +1,16 @@
+h1 {
+  font-variation-settings: "wght" 700;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8rem;
+}
+
+.dashboard {
+  height: 100vh;
+  background-color: var(--light);
+  color: var(--dark);
+  padding: 2rem;
+}
