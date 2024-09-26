@@ -25,7 +25,8 @@ export class DashProjectListComponent {
     });
   }
 
-  printProjects() {
-    console.log('print', this.projects);
+  addProject() {
+    console.log('añadir');
+    this.router.navigate(['/atoridashboard/project-add']);
   }
 }

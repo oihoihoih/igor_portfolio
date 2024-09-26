@@ -6,14 +6,20 @@ import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-l
 import { DashProjectListComponent } from './pages/dash-project-list/dash-project-list.component';
 
 import { NgIconsModule, provideNgIconsConfig } from '@ng-icons/core';
-import { heroPencil, heroTrash, heroPower } from '@ng-icons/heroicons/outline';
+import {
+  heroPencil,
+  heroTrash,
+  heroPower,
+  heroPlus,
+} from '@ng-icons/heroicons/outline';
+import { DashAddProjectComponent } from './pages/dash-add-project/dash-add-project.component';
 
 @NgModule({
-  declarations: [DashboardLayoutComponent, DashProjectListComponent],
+  declarations: [DashboardLayoutComponent, DashProjectListComponent, DashAddProjectComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    NgIconsModule.withIcons({ heroPencil, heroTrash, heroPower }),
+    NgIconsModule.withIcons({ heroPencil, heroTrash, heroPower, heroPlus }),
   ],
   providers: [provideNgIconsConfig({ size: '2.4rem' })],
 })

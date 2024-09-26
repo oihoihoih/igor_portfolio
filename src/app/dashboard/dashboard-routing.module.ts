@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { DashProjectListComponent } from './pages/dash-project-list/dash-project-list.component';
+import { DashAddProjectComponent } from './pages/dash-add-project/dash-add-project.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       { path: 'project-list', component: DashProjectListComponent },
+      { path: 'project-add', component: DashAddProjectComponent },
       { path: '**', redirectTo: 'project-list' },
     ],
   },

@@ -5,4 +5,9 @@ li {
   padding: 1.6rem 0;
   overflow: hidden;
   border-bottom: solid 1px var(--aux-dark);
+  text-overflow: ellipsis;
+}
+
+ng-icon {
+  margin-left: 1.6rem;
 }
