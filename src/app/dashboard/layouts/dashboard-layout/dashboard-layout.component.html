@@ -1,10 +1,12 @@
-<h1>Dashboard</h1>
-<h1>{{ user() | json }}</h1>
+<header>
+  <!-- TODO: Este título tiene que ser dinámico dependiendo del apartado en el que se encuentre -->
+  <h1>Dashboard</h1>
 
-<button (click)="onLogout()">Cerrar sesión</button>
+  <button (click)="onLogout()">Cerrar sesión</button>
+</header>
 
-<button (click)="getProjects()">Obtener proyectos</button>
-
-<div>
-  <router-outlet></router-outlet>
-</div>
+<section>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</section>
