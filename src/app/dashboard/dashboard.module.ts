@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
@@ -15,9 +16,14 @@ import {
 import { DashAddProjectComponent } from './pages/dash-add-project/dash-add-project.component';
 
 @NgModule({
-  declarations: [DashboardLayoutComponent, DashProjectListComponent, DashAddProjectComponent],
+  declarations: [
+    DashboardLayoutComponent,
+    DashProjectListComponent,
+    DashAddProjectComponent,
+  ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DashboardRoutingModule,
     NgIconsModule.withIcons({ heroPencil, heroTrash, heroPower, heroPlus }),
   ],

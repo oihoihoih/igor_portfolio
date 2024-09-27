@@ -1,62 +1,123 @@
-<form>
+<form [formGroup]="addProjectForm" (ngSubmit)="onSubmit()">
   <h2>Añadir proyecto</h2>
   <p>
     Todos los campos que contengan un asterisco
     <strong><span aria-label="required">*</span></strong> son obligatorios
   </p>
-  <p>
+  <div class="input-box">
     <label for="title">
       <span>Título del proyecto: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input type="text" id="title" name="title" required />
-  </p>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      formControlName="title"
+      placeholder="Título del proyecto"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Título del proyecto'"
+    />
+  </div>
 
-  <p>
+  <div class="input-box">
     <label for="year">
       <span>Año: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input type="number" id="year" name="year" required />
-  </p>
+    <input
+      type="number"
+      id="year"
+      name="year"
+      formControlName="year"
+      placeholder="Año"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Año'"
+    />
+  </div>
 
-  <p>
+  <div class="input-box">
     <label for="director">
       <span>Director: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input type="number" id="director" name="director" required />
-  </p>
+    <input
+      type="string"
+      id="director"
+      name="director"
+      formControlName="director"
+      placeholder="Nombre del director"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Nombre del director'"
+    />
+  </div>
 
-  <p>
+  <div class="input-box">
     <label for="DOP">
       <span>DOP: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input type="string" id="DOP" name="DOP" required />
-  </p>
+    <input
+      type="string"
+      id="DOP"
+      name="DOP"
+      formControlName="DOP"
+      placeholder="Nombre del DOP"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Nombre del DOP'"
+    />
+  </div>
 
-  <p>
+  <div class="input-box">
     <label for="category">
       <span>Categoría de la película: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input type="string" id="category" name="category" required />
-  </p>
+    <input
+      type="string"
+      id="category"
+      name="category"
+      formControlName="category"
+      placeholder="Categoría de la película"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Categoría de la película'"
+    />
+  </div>
 
-  <p>
+  <div class="input-box">
     <!-- TODO: Añadir sistema de carga de imagen -->
     <label for="imageUrl">
       <span>Url de la imagen: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input type="string" id="imageUrl" name="imageUrl" required />
-  </p>
+    <input
+      type="string"
+      id="imageUrl"
+      name="imageUrl"
+      formControlName="imageUrl"
+      placeholder="Url de la imagen"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Url de la imagen'"
+    />
+  </div>
 
-  <p>
+  <div class="input-box">
     <label for="trailerUrl">
       <span>Url del trailer: </span>
     </label>
-    <input type="number" id="trailerUrl" name="trailerUrl" />
-  </p>
+    <input
+      type="string"
+      id="trailerUrl"
+      name="trailerUrl"
+      formControlName="trailerUrl"
+      placeholder="Url del trailer"
+      onfocus="this.placeholder = ''"
+      onblur="this.placeholder = 'Url del trailer'"
+    />
+  </div>
+  <div class="button-group">
+    <button class="btn-primary" type="submit">Guardar proyecto</button>
+    <!-- TODO: Añadir una alerta de Estás seguro de que no quieres guardar? -->
+    <button class="btn-primary" (click)="cancelSubmit()">Cancelar</button>
+  </div>
 </form>

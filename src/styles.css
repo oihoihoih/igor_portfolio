@@ -59,6 +59,26 @@ p {
   cursor: pointer;
 }
 
+.button-group {
+  display: flex;
+  flex-direction: column;
+  margin: 1.6rem 0;
+}
+
+.btn-primary {
+  background-color: var(--dark);
+  color: var(--light);
+  padding: 1rem;
+  margin: 0.8rem 0;
+  border-radius: 5px;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btn-primary:last-of-type {
+  background-color: var(--aux-dark);
+}
+
 /**********************************************
 ***********************************************
 LAYOUT  
