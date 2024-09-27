@@ -15,16 +15,16 @@ export class ProjectItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.project = new Project(
-      'El otro lado',
-      2024,
-      'Alberto de Toro y Javier Ruíz Caldera',
-      'Bernat Bosch',
-      'assets/project-imgs/el-otro-lado.jpeg',
-      'Género 1',
-      'https://www.youtube.com/watch?v=123456',
-      'https://www.imdb.com/title/tt123456'
-    );
+    // this.project = new Project(
+    //   'El otro lado',
+    //   2024,
+    //   'Alberto de Toro y Javier Ruíz Caldera',
+    //   'Bernat Bosch',
+    //   'assets/project-imgs/el-otro-lado.jpeg',
+    //   'Género 1',
+    //   'https://www.youtube.com/watch?v=123456',
+    //   'https://www.imdb.com/title/tt123456'
+    // );
   }
 
   closeButton(event: any) {

@@ -27,7 +27,10 @@
       <span class="project-title"> {{ project.title }}</span>
       <span class="project-crud">
         <ng-icon name="heroPencil"></ng-icon>
-        <ng-icon name="heroTrash"></ng-icon>
+        <ng-icon
+          name="heroTrash"
+          (click)="deleteProject(project._id)"
+        ></ng-icon>
       </span>
     </li>
   </ul>

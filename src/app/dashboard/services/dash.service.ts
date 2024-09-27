@@ -28,5 +28,9 @@ export class DashService {
 
   updateProject() {}
 
-  deleteProject() {}
+  deleteProject(id: string): Observable<Project> {
+    const url = `${this.baseUrl}/projects/${id}`;
+
+    return this.http.delete<Project>(url);
+  }
 }

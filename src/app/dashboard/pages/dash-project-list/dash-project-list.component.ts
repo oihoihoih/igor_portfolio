@@ -25,8 +25,17 @@ export class DashProjectListComponent {
     });
   }
 
+  // ADD PROJECT
   addProject() {
     console.log('añadir');
     this.router.navigate(['/atoridashboard/project-add']);
+  }
+
+  // DELETE PROJECT
+  deleteProject(id: string) {
+    console.log('eliminar', id);
+    this.dashboardService.deleteProject(id).subscribe(() => {
+      this.getProjects();
+    });
   }
 }
