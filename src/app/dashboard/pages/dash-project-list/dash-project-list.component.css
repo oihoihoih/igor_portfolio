@@ -8,6 +8,10 @@ li {
   text-overflow: ellipsis;
 }
 
-ng-icon {
+.project-crud > ng-icon {
   margin-left: 1.6rem;
+}
+
+.btn-circle > ng-icon {
+  transform: scale(1.5);
 }
