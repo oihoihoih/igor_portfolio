@@ -24,6 +24,7 @@ export class DashAddProjectComponent {
     this.createForm();
   }
 
+  //  TODO: Añadir un validador para las url
   createForm() {
     this.addProjectForm = this.formBuilder.group({
       title: ['', [Validators.required]],
