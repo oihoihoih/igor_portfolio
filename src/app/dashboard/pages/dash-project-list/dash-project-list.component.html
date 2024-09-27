@@ -24,7 +24,7 @@
   <ul>
     <!-- TODO: Mirar la mejor manera de introducir el icono (semántico) -->
     <li *ngFor="let project of projects">
-      {{ project.title }}
+      <span class="project-title"> {{ project.title }}</span>
       <span class="project-crud">
         <ng-icon name="heroPencil"></ng-icon>
         <ng-icon name="heroTrash"></ng-icon>
