@@ -29,16 +29,24 @@ export class DashAddProjectComponent {
       title: ['', [Validators.required]],
       year: ['', [Validators.required]],
       director: ['', [Validators.required]],
-      DOP: ['', [Validators.required]],
+      dop: ['', [Validators.required]],
       category: ['', [Validators.required]],
-      imageUrl: ['', [Validators.required]],
-      genre: ['', [Validators.required]],
+      img: ['', [Validators.required]],
       trailerUrl: ['', [Validators.required]],
     });
   }
 
   onSubmit() {
     console.log('enviado', this.addProjectForm.value);
+    this.dashService.createProject(this.addProjectForm.value).subscribe({
+      next: () => {
+        console.log('Proyecto creado');
+        this.router.navigateByUrl('/atoridashboard');
+      },
+      error: (error) => {
+        console.log({ error });
+      },
+    });
   }
 
   cancelSubmit() {

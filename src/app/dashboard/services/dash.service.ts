@@ -20,7 +20,11 @@ export class DashService {
 
   getProjectById() {}
 
-  createProject() {}
+  createProject(project: Project): Observable<Project> {
+    const url = `${this.baseUrl}/projects`;
+
+    return this.http.post<Project>(url, project);
+  }
 
   updateProject() {}
 
