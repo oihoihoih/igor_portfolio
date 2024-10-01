@@ -1,1 +1,170 @@
-<p>dash-edit-project works!</p>
+<form [formGroup]="editProjectForm" (ngSubmit)="onSubmit()">
+  <h2>Editar proyecto</h2>
+  <p>
+    Todos los campos que contengan un asterisco
+    <strong><span aria-label="required">*</span></strong> son obligatorios
+  </p>
+  <div class="input-box">
+    <label for="title">
+      <span>Título del proyecto: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      formControlName="title"
+      value="{{ project.title }}"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+      editProjectForm.get('title')?.errors?.['required'] &&
+      (editProjectForm.get('title')?.dirty ||
+      editProjectForm.get('title')?.touched)
+    "
+    >
+      El campo del título es obligatorio.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="year">
+      <span>Año: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="number"
+      id="year"
+      name="year"
+      formControlName="year"
+      value="{{ project.year }}"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('year')?.errors?.['required'] &&
+    (editProjectForm.get('year')?.dirty ||
+    editProjectForm.get('year')?.touched)
+  "
+    >
+      Es obligatorio añadir un año.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="director">
+      <span>Director: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="string"
+      id="director"
+      name="director"
+      formControlName="director"
+      value="{{ project.director }}"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('director')?.errors?.['required'] &&
+    (editProjectForm.get('director')?.dirty ||
+    editProjectForm.get('director')?.touched)
+  "
+    >
+      Es obligatorio añadir uno o varios directores.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="dop">
+      <span>DOP: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="string"
+      id="dop"
+      name="dop"
+      formControlName="dop"
+      value=" {{ project.dop }}"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('dop')?.errors?.['required'] &&
+    (editProjectForm.get('dop')?.dirty ||
+    editProjectForm.get('dop')?.touched)
+  "
+    >
+      Es obligatorio añadir uno varios DOP.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="category">
+      <span>Género de la película: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="string"
+      id="category"
+      name="category"
+      formControlName="category"
+      value=" {{ project.category }}"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('category')?.errors?.['required'] &&
+    (editProjectForm.get('category')?.dirty ||
+    editProjectForm.get('category')?.touched)
+  "
+    >
+      Es obligatorio añadir al menos un género de la película.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <!-- TODO: Añadir sistema de carga de imagen -->
+    <label for="img">
+      <span>Url de la imagen: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="string"
+      id="img"
+      name="img"
+      formControlName="img"
+      value=" {{ project.img }}"
+    />
+    <!-- TODO: Añadir un validador para las url -->
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('img')?.errors?.['required'] &&
+    (editProjectForm.get('img')?.dirty ||
+    editProjectForm.get('img')?.touched)
+  "
+    >
+      Es obligatorio añadir una imagen.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="trailerUrl">
+      <span>Url del trailer: </span>
+    </label>
+    <input
+      type="string"
+      id="trailerUrl"
+      name="trailerUrl"
+      formControlName="trailerUrl"
+      value="{{ project.trailerUrl }}"
+    />
+  </div>
+  <div class="button-group">
+    <button class="btn-primary" type="submit">Guardar proyecto</button>
+    <!-- TODO: Añadir una alerta de Estás seguro de que no quieres guardar? -->
+    <button class="btn-primary" (click)="cancelSubmit()">Cancelar</button>
+  </div>
+</form>

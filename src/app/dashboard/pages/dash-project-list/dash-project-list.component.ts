@@ -39,8 +39,7 @@ export class DashProjectListComponent {
   }
 
   // EDIT PROJECT
-  editProject(id: string, project: Project) {
-    console.log('editar', id);
+  editProject(id: string) {
     this.router.navigate(['/atoridashboard/project-edit', id]);
   }
 }

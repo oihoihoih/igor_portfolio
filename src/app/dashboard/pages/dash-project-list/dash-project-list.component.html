@@ -1,4 +1,4 @@
-<!-- SPINNER -->
+SPINNER
 <div role="status" *ngIf="cargando">
   <svg
     aria-hidden="true"
@@ -26,10 +26,7 @@
     <li *ngFor="let project of projects">
       <span class="project-title"> {{ project.title }}</span>
       <span class="project-crud">
-        <ng-icon
-          name="heroPencil"
-          (click)="editProject(project._id, project)"
-        ></ng-icon>
+        <ng-icon name="heroPencil" (click)="editProject(project._id)"></ng-icon>
         <ng-icon
           name="heroTrash"
           (click)="deleteProject(project._id)"

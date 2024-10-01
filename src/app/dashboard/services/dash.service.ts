@@ -12,13 +12,17 @@ export class DashService {
 
   constructor(private http: HttpClient) {}
 
+  // GET ALL PROJECTS
   getAllProjects(): Observable<Project[]> {
     const url = `${this.baseUrl}/projects`;
-
     return this.http.get<Project[]>(url).pipe(map((res) => res));
   }
 
-  getProjectById() {}
+  // GET PROJECT BY ID
+  getProjectById(id: string): Observable<Project> {
+    const url = `${this.baseUrl}/projects/${id}`;
+    return this.http.get<Project>(url);
+  }
 
   createProject(project: Project): Observable<Project> {
     const url = `${this.baseUrl}/projects`;
@@ -36,7 +40,6 @@ export class DashService {
 
   editProject(id: string, project: Project): Observable<Project> {
     const url = `${this.baseUrl}/projects/${id}`;
-
     return this.http.patch<Project>(url, project);
   }
 }
