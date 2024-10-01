@@ -33,4 +33,10 @@ export class DashService {
 
     return this.http.delete<Project>(url);
   }
+
+  editProject(id: string, project: Project): Observable<Project> {
+    const url = `${this.baseUrl}/projects/${id}`;
+
+    return this.http.patch<Project>(url, project);
+  }
 }

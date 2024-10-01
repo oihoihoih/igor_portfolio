@@ -33,9 +33,14 @@ export class DashProjectListComponent {
 
   // DELETE PROJECT
   deleteProject(id: string) {
-    console.log('eliminar', id);
     this.dashboardService.deleteProject(id).subscribe(() => {
       this.getProjects();
     });
+  }
+
+  // EDIT PROJECT
+  editProject(id: string, project: Project) {
+    console.log('editar', id);
+    this.router.navigate(['/atoridashboard/project-edit', id]);
   }
 }

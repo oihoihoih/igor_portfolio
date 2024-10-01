@@ -14,12 +14,14 @@ import {
   heroPlus,
 } from '@ng-icons/heroicons/outline';
 import { DashAddProjectComponent } from './pages/dash-add-project/dash-add-project.component';
+import { DashEditProjectComponent } from './pages/dash-edit-project/dash-edit-project.component';
 
 @NgModule({
   declarations: [
     DashboardLayoutComponent,
     DashProjectListComponent,
     DashAddProjectComponent,
+    DashEditProjectComponent,
   ],
   imports: [
     CommonModule,
