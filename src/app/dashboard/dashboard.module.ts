@@ -6,6 +6,8 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardLayoutComponent } from './layouts/dashboard-layout/dashboard-layout.component';
 import { DashProjectListComponent } from './pages/dash-project-list/dash-project-list.component';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 import { NgIconsModule, provideNgIconsConfig } from '@ng-icons/core';
 import {
   heroPencil,
@@ -26,6 +28,7 @@ import { DashEditProjectComponent } from './pages/dash-edit-project/dash-edit-pr
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    PipesModule,
     DashboardRoutingModule,
     NgIconsModule.withIcons({ heroPencil, heroTrash, heroPower, heroPlus }),
   ],

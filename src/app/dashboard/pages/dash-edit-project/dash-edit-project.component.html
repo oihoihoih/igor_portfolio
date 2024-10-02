@@ -128,6 +128,13 @@
     </div>
   </div>
 
+  <div>
+    <img
+      src="{{ project.img }}"
+      alt="Imagen de la película"
+      class="img-preview"
+    />
+  </div>
   <div class="input-box">
     <!-- TODO: Añadir sistema de carga de imagen -->
     <label for="img">
@@ -139,7 +146,7 @@
       id="img"
       name="img"
       formControlName="img"
-      value=" {{ project.img }}"
+      value=" {{ project.img | image }}"
     />
     <!-- TODO: Añadir un validador para las url -->
     <div
