@@ -112,3 +112,35 @@ BUTTONS
   right: 2.4rem;
   border-radius: 50%;
 }
+
+/**********************************************
+***********************************************
+FORMS  
+***********************************************
+***********************************************/
+
+.input-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.6rem;
+}
+
+label {
+  margin: 0.8rem 0;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+
+.input-box input {
+  padding: 1rem;
+  border: 1px solid var(--aux-dark);
+  border-radius: 5px;
+  font-size: 1.6rem;
+  background-color: transparent;
+}
+
+input::placeholder {
+  color: var(--aux-dark);
+  font-variation-settings: "wght" 200;
+}

@@ -1,4 +1,8 @@
-<form [formGroup]="editProjectForm" (ngSubmit)="onSubmit()">
+<form
+  *ngIf="editProjectForm"
+  [formGroup]="editProjectForm"
+  (ngSubmit)="onSubmit()"
+>
   <h2>Editar proyecto</h2>
   <p>
     Todos los campos que contengan un asterisco

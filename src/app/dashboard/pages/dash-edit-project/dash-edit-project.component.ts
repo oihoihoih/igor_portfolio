@@ -13,6 +13,7 @@ export class DashEditProjectComponent {
   public editProjectForm!: FormGroup;
   private _id: string = '';
   public project!: Project;
+
   constructor(
     private formBuilder: FormBuilder,
     private dashService: DashService,
@@ -39,7 +40,17 @@ export class DashEditProjectComponent {
   }
 
   onSubmit() {
-    console.log('enviado', this.editProjectForm.value);
+    this.dashService
+      .editProject(this.project._id, this.editProjectForm.value)
+      .subscribe({
+        next: () => {
+          console.log('Proyecto editado');
+          this.router.navigateByUrl('/atoridashboard');
+        },
+        error: (error) => {
+          console.log({ error });
+        },
+      });
   }
 
   cancelSubmit() {

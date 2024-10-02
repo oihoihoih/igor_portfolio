@@ -24,13 +24,18 @@ export class DashService {
     return this.http.get<Project>(url);
   }
 
+  // CREATE PROJECT
   createProject(project: Project): Observable<Project> {
     const url = `${this.baseUrl}/projects`;
 
     return this.http.post<Project>(url, project);
   }
 
-  updateProject() {}
+  // UPDATE PROJECT
+  // updateProject(project: Project): Observable<Project> {
+  //   const url = `${this.baseUrl}/projects/${project._id}`;
+  //   return this.http.put<Project>(url, project);
+  // }
 
   deleteProject(id: string): Observable<Project> {
     const url = `${this.baseUrl}/projects/${id}`;
@@ -40,6 +45,6 @@ export class DashService {
 
   editProject(id: string, project: Project): Observable<Project> {
     const url = `${this.baseUrl}/projects/${id}`;
-    return this.http.patch<Project>(url, project);
+    return this.http.put<Project>(url, project);
   }
 }
