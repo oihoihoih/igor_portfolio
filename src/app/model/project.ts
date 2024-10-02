@@ -1,3 +1,7 @@
+import { environment } from '../../environments/environments';
+
+const baseUrl = environment.baseUrl;
+
 export class Project {
   constructor(
     public _id: string,
