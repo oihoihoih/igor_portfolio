@@ -21,9 +21,20 @@ export class DashEditProjectComponent {
     private route: ActivatedRoute
   ) {
     this._id = this.route.snapshot.params['id'];
-    this.dashService.getProjectById(this._id).subscribe((project: Project) => {
-      this.project = project;
-      this.editForm();
+
+    this.dashService.getProjectById(this._id).subscribe({
+      next: (project: Project) => {
+        if (!project) {
+          this.router.navigateByUrl('/atoridashboard');
+          return;
+        }
+        this.project = project;
+        this.editForm();
+      },
+      error: (error) => {
+        console.error('Error fetching project:', error);
+        this.router.navigateByUrl('/atoridashboard');
+      },
     });
   }
 
@@ -54,6 +65,7 @@ export class DashEditProjectComponent {
   }
 
   cancelSubmit() {
-    console.log('cancelado', this.editProjectForm.value);
+    // TODO: Añadir una alerta de tipo estás seguro de que no quieres guardar?
+    this.router.navigateByUrl('/atoridashboard');
   }
 }
