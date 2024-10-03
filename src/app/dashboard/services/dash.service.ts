@@ -31,20 +31,23 @@ export class DashService {
     return this.http.post<Project>(url, project);
   }
 
-  // UPDATE PROJECT
-  // updateProject(project: Project): Observable<Project> {
-  //   const url = `${this.baseUrl}/projects/${project._id}`;
-  //   return this.http.put<Project>(url, project);
-  // }
-
+  // DELETE PROJECT
   deleteProject(id: string): Observable<Project> {
     const url = `${this.baseUrl}/projects/${id}`;
 
     return this.http.delete<Project>(url);
   }
 
-  editProject(id: string, project: Project): Observable<Project> {
+  // EDIT PROJECT
+  editProject(id: string, projectData: FormData): Observable<Project> {
     const url = `${this.baseUrl}/projects/${id}`;
-    return this.http.put<Project>(url, project);
+    return this.http.put<Project>(url, projectData);
+  }
+
+  // UPLOAD IMAGE
+  uploadFile(formData: FormData): Observable<any> {
+    const url = `${this.baseUrl}/projects/uploads`;
+    console.log(formData);
+    return this.http.post<any>(url, formData);
   }
 }

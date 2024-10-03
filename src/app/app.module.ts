@@ -7,8 +7,6 @@ import { AppComponent } from './app.component';
 import { ProjectItemComponent } from './project/project-item/project-item.component';
 import { ProjectListComponent } from './project/project-list/project-list.component';
 
-import { PipesModule } from './pipes/pipes.module';
-
 //HeroIcons
 import { NgIconsModule } from '@ng-icons/core';
 import { featherAirplay } from '@ng-icons/feather-icons';
@@ -19,7 +17,6 @@ import { heroUsers } from '@ng-icons/heroicons/outline';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PipesModule,
     NgIconsModule.withIcons({ featherAirplay, heroUsers }),
   ],
   providers: [provideHttpClient()],

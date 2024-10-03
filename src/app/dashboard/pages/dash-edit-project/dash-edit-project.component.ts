@@ -13,6 +13,9 @@ export class DashEditProjectComponent {
   public editProjectForm!: FormGroup;
   private _id: string = '';
   public project!: Project;
+  public selectedFileUrl: string | ArrayBuffer | null = null;
+  public selectedFile: File | null = null;
+  public defaultImageUrl: string = './assets/images/dummy-project.jpg'; // Ruta de la imagen dummy
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,6 +32,17 @@ export class DashEditProjectComponent {
           return;
         }
         this.project = project;
+
+        // Asegurarte de usar la URL completa del backend para acceder a la imagen
+        const backendUrl = 'http://localhost:3000';
+
+        this.selectedFileUrl = `${backendUrl}${this.project.img}`;
+        if (!this.selectedFileUrl) {
+          console.log('no hay imagen ');
+        } else {
+          console.log('hay imagen, ', this.selectedFileUrl);
+        }
+
         this.editForm();
       },
       error: (error) => {
@@ -38,22 +52,62 @@ export class DashEditProjectComponent {
     });
   }
 
+  // SELECT FILE
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.selectedFileUrl = reader.result;
+      };
+      if (this.selectedFile) {
+        reader.readAsDataURL(this.selectedFile);
+      }
+    }
+  }
+
   editForm() {
     this.editProjectForm = this.formBuilder.group({
-      title: [this.project.title, [Validators.required]],
-      year: [this.project.year, [Validators.required]],
-      director: [this.project.director, [Validators.required]],
-      dop: [this.project.dop, [Validators.required]],
-      category: [this.project.category, [Validators.required]],
-      img: [this.project.img, [Validators.required]],
-      trailerUrl: [this.project.trailerUrl, [Validators.required]],
+      title: [this.project.title || '', [Validators.required]],
+      year: [this.project.year || '', [Validators.required]],
+      director: [this.project.director || '', [Validators.required]],
+      dop: [this.project.dop || '', [Validators.required]],
+      category: [this.project.category || '', [Validators.required]],
+      trailerUrl: [this.project.trailerUrl || '', [Validators.required]],
     });
   }
 
   onSubmit() {
-    this.dashService
-      .editProject(this.project._id, this.editProjectForm.value)
-      .subscribe({
+    // Crear un FormData para enviar el formulario con la imagen
+    const formData = new FormData();
+
+    // Añadir los campos del formulario al FormData
+    formData.append('title', this.editProjectForm.get('title')?.value);
+    formData.append(
+      'year',
+      String(Number(this.editProjectForm.get('year')?.value))
+    ); // Convertir a número
+    formData.append('director', this.editProjectForm.get('director')?.value);
+    formData.append('dop', this.editProjectForm.get('dop')?.value);
+    formData.append('category', this.editProjectForm.get('category')?.value);
+    formData.append(
+      'trailerUrl',
+      this.editProjectForm.get('trailerUrl')?.value
+    );
+
+    // Añadir la imagen al FormData si se ha seleccionado una
+    if (this.selectedFile) {
+      formData.append('img', this.selectedFile);
+    }
+
+    // Debug: imprimir los datos del formData
+    for (let pair of (formData as any).entries()) {
+      console.log(`${pair[0]}: ${pair[1]}`);
+    }
+
+    if (this.editProjectForm.valid) {
+      this.dashService.editProject(this.project._id, formData).subscribe({
         next: () => {
           console.log('Proyecto editado');
           this.router.navigateByUrl('/atoridashboard');
@@ -62,6 +116,9 @@ export class DashEditProjectComponent {
           console.log({ error });
         },
       });
+    } else {
+      console.log('Formulario inválido. Por favor, revisa los campos.');
+    }
   }
 
   cancelSubmit() {

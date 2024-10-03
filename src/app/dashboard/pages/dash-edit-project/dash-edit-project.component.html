@@ -13,13 +13,7 @@
       <span>Título del proyecto: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input
-      type="text"
-      id="title"
-      name="title"
-      formControlName="title"
-      value="{{ project.title }}"
-    />
+    <input type="text" id="title" name="title" formControlName="title" />
     <div
       class="txt-alert"
       *ngIf="
@@ -37,13 +31,7 @@
       <span>Año: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input
-      type="number"
-      id="year"
-      name="year"
-      formControlName="year"
-      value="{{ project.year }}"
-    />
+    <input type="number" id="year" name="year" formControlName="year" />
     <div
       class="txt-alert"
       *ngIf="
@@ -66,7 +54,6 @@
       id="director"
       name="director"
       formControlName="director"
-      value="{{ project.director }}"
     />
     <div
       class="txt-alert"
@@ -85,13 +72,7 @@
       <span>DOP: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input
-      type="string"
-      id="dop"
-      name="dop"
-      formControlName="dop"
-      value=" {{ project.dop }}"
-    />
+    <input type="string" id="dop" name="dop" formControlName="dop" />
     <div
       class="txt-alert"
       *ngIf="
@@ -114,7 +95,6 @@
       id="category"
       name="category"
       formControlName="category"
-      value=" {{ project.category }}"
     />
     <div
       class="txt-alert"
@@ -128,36 +108,27 @@
     </div>
   </div>
 
-  <div>
-    <img
-      src="{{ project.img }}"
-      alt="Imagen de la película"
-      class="img-preview"
-    />
-  </div>
   <div class="input-box">
-    <!-- TODO: Añadir sistema de carga de imagen -->
     <label for="img">
-      <span>Url de la imagen: </span>
+      <span>Imagen: </span>
       <strong><span aria-label="required">*</span></strong>
     </label>
-    <input
-      type="string"
-      id="img"
-      name="img"
-      formControlName="img"
-      value=" {{ project.img | image }}"
-    />
-    <!-- TODO: Añadir un validador para las url -->
+    <!-- TODO: Ver si se puede cambiar el estilo del botón -->
+    <input type="file" id="img" name="img" (change)="onFileChange($event)" />
     <div
       class="txt-alert"
       *ngIf="
-    editProjectForm.get('img')?.errors?.['required'] &&
-    (editProjectForm.get('img')?.dirty ||
-    editProjectForm.get('img')?.touched)
-  "
+      editProjectForm.get('img')?.errors?.['required'] &&
+      (editProjectForm.get('img')?.dirty ||
+      editProjectForm.get('img')?.touched)
+    "
     >
       Es obligatorio añadir una imagen.
+    </div>
+
+    <!-- Mostrar imagen actual o dummy -->
+    <div *ngIf="selectedFileUrl">
+      <img [src]="selectedFileUrl" alt="Previsualización" width="200px" />
     </div>
   </div>
 
@@ -170,7 +141,6 @@
       id="trailerUrl"
       name="trailerUrl"
       formControlName="trailerUrl"
-      value="{{ project.trailerUrl }}"
     />
   </div>
   <div class="button-group">

@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashService } from '../../services/dash.service';
 import { Router } from '@angular/router';
 
@@ -15,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class DashAddProjectComponent {
   public addProjectForm!: FormGroup;
+  public selectedFile: File | null = null;
+  public selectedFileUrl: string | ArrayBuffer | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -22,6 +19,21 @@ export class DashAddProjectComponent {
     private router: Router
   ) {
     this.createForm();
+  }
+
+  // SELECT FILE
+  onFileChange(event: any): void {
+    if (event.target.files.length > 0) {
+      this.selectedFile = event.target.files[0];
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.selectedFileUrl = reader.result;
+      };
+      if (this.selectedFile) {
+        reader.readAsDataURL(this.selectedFile);
+      }
+    }
   }
 
   //  TODO: Añadir un validador para las url
@@ -32,20 +44,32 @@ export class DashAddProjectComponent {
       director: ['', [Validators.required]],
       dop: ['', [Validators.required]],
       category: ['', [Validators.required]],
-      img: ['', [Validators.required]],
-      trailerUrl: ['', [Validators.required]],
+      trailerUrl: [''],
     });
   }
 
   onSubmit() {
-    console.log('enviado', this.addProjectForm.value);
-    this.dashService.createProject(this.addProjectForm.value).subscribe({
-      next: () => {
-        console.log('Proyecto creado');
+    if (this.addProjectForm.invalid) {
+      console.log('Formulario no válido');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile as File);
+    formData.append('title', this.addProjectForm.get('title')?.value);
+    formData.append('year', this.addProjectForm.get('year')?.value);
+    formData.append('director', this.addProjectForm.get('director')?.value);
+    formData.append('dop', this.addProjectForm.get('dop')?.value);
+    formData.append('category', this.addProjectForm.get('category')?.value);
+    formData.append('trailerUrl', this.addProjectForm.get('trailerUrl')?.value);
+
+    this.dashService.uploadFile(formData).subscribe({
+      next: (resp) => {
+        console.log('Archivo subido correctamente', resp);
         this.router.navigateByUrl('/atoridashboard');
       },
       error: (error) => {
-        console.log({ error });
+        console.error('Error al subir el archivo', error);
       },
     });
   }
