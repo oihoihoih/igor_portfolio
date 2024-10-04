@@ -35,21 +35,11 @@
             name="heroPencil"
             (click)="editProject(project._id)"
           ></ng-icon>
-          <ng-icon name="heroTrash" (click)="myDialog.showModal()"></ng-icon>
+          <ng-icon name="heroTrash" (click)="showModal(project._id)"></ng-icon>
         </span>
       </li>
     </ul>
   </nav>
-
-  <!-- Para eliminar proyecto:
-   (click)="deleteProject(project._id)" -->
-  <!-- Alertas -->
-  <dialog #myDialog>
-    <h2>¿Estás seguro de quere borrar el proyecto?</h2>
-    <p>Esta acción no podrá ser deshecha…</p>
-    <button>Cancelar</button>
-    <button>Aceptar</button>
-  </dialog>
 
   <!-- Add project button -->
   <aside>
@@ -58,3 +48,21 @@
     </button>
   </aside>
 </article>
+
+<!-- Para eliminar proyecto:
+   (click)="deleteProject(project._id)" -->
+
+<!-- Alertas -->
+
+<!-- TODO: MANEJAR EL TEMA DE LA ANIMACIÓN  -->
+<div class="dialog" *ngIf="dialogIsOpen">
+  <h2>¿Seguro que quieres borrar el proyecto?</h2>
+  <p>Esta acción no podrá ser deshecha…</p>
+  <div class="btn-dialog">
+    <button class="btn-primary grow" (click)="hideModal()">Cancelar</button>
+    <button class="btn-primary grow" (click)="deleteProject(projectId)">
+      Aceptar
+    </button>
+  </div>
+</div>
+<div class="backdrop" *ngIf="dialogIsOpen" (click)="hideModal()"></div>

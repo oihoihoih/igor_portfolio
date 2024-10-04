@@ -11,7 +11,8 @@ import { Project } from '../../../model/project';
 export class DashProjectListComponent {
   public projects: Project[] = [];
   public cargando: boolean = true;
-  // @ViewChild('myDialog') myDialog!: ElementRef<HTMLDialogElement>;
+  public projectId!: string;
+  public dialogIsOpen: boolean = false;
 
   constructor(private dashboardService: DashService, private router: Router) {
     this.getProjects();
@@ -37,6 +38,7 @@ export class DashProjectListComponent {
     this.dashboardService.deleteProject(id).subscribe(() => {
       this.getProjects();
     });
+    this.dialogIsOpen = false;
   }
 
   // EDIT PROJECT
@@ -44,9 +46,13 @@ export class DashProjectListComponent {
     this.router.navigate(['/atoridashboard/project-edit', id]);
   }
 
-  // SHOW DIALOG
-  // showModal() {
-  //   console.log('prueba');
-  //   this.myDialog.nativeElement.showModal();
-  // }
+  showModal(id: string): void {
+    this.dialogIsOpen = true;
+    this.projectId = id;
+    // Lógica para mostrar el modal
+  }
+
+  hideModal(): void {
+    this.dialogIsOpen = false;
+  }
 }
