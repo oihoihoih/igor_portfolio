@@ -69,8 +69,7 @@ export class DashAddProjectComponent {
     formData.append('trailerUrl', this.addProjectForm.get('trailerUrl')?.value);
 
     this.dashService.uploadFile(formData).subscribe({
-      next: (resp) => {
-        console.log('Archivo subido correctamente', resp);
+      next: () => {
         this.openDialog();
       },
       error: (error) => {

@@ -114,8 +114,7 @@ export class DashEditProjectComponent {
     if (this.editProjectForm.valid) {
       this.dashService.editProject(this.project._id, formData).subscribe({
         next: () => {
-          console.log('Proyecto editado');
-          this.router.navigateByUrl('/atoridashboard');
+          this.openDialog();
         },
         error: (error) => {
           console.log({ error });
@@ -141,5 +140,20 @@ export class DashEditProjectComponent {
 
   hideModal(): void {
     this.dialogIsOpen = false;
+  }
+
+  openDialog() {
+    setTimeout(() => {
+      this.dialogIsOpen = true;
+      this.dialogMessageH2 = 'Cambios guardados!';
+      this.dialogP = 'Tu proyecto se ha guardado correctamente';
+      this.btnOk = '';
+      this.btnCancel = '';
+    }, 500);
+
+    setTimeout(() => {
+      this.dialogIsOpen = false;
+      this.router.navigateByUrl('/atoridashboard');
+    }, 3000);
   }
 }
