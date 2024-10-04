@@ -18,18 +18,18 @@ export class AppComponent {
     if (this.authService.authStatus() === AuthStatus.checking) return false;
     return true;
   });
-
-  public authStatusChangedEffect = effect(() => {
-    console.log('authstatus', this.authService.authStatus());
-    switch (this.authService.authStatus()) {
-      case AuthStatus.checking:
-        return;
-      case AuthStatus.authenticated:
-        this.router.navigateByUrl('/atoridashboard');
-        return;
-      case AuthStatus.notAuthenticated:
-        this.router.navigateByUrl('/auth/login');
-        return;
-    }
-  });
+  //
+  //   public authStatusChangedEffect = effect(() => {
+  //     console.log('authstatus', this.authService.authStatus());
+  //     switch (this.authService.authStatus()) {
+  //       case AuthStatus.checking:
+  //         return;
+  //       case AuthStatus.authenticated:
+  //         this.router.navigateByUrl('/atoridashboard');
+  //         return;
+  //       case AuthStatus.notAuthenticated:
+  //         this.router.navigateByUrl('/auth/login');
+  //         return;
+  //     }
+  //   });
 }

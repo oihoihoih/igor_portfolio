@@ -4,6 +4,12 @@ import { isAuthenticated } from './auth/guards/is-authenticated.guard';
 import { isNotAuthenticated } from './auth/guards';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: 'public/home', // Redirigir a la página principal pública
+  //   pathMatch: 'full',
+  // },
+
   {
     path: 'auth',
     // guards
@@ -18,8 +24,13 @@ const routes: Routes = [
       import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
   {
+    path: '',
+    loadChildren: () =>
+      import('./public/public.module').then((m) => m.PublicModule),
+  },
+  {
     path: '**',
-    redirectTo: 'public',
+    redirectTo: '', // Redirigir cualquier ruta desconocida a la página pública
   },
 ];
 
