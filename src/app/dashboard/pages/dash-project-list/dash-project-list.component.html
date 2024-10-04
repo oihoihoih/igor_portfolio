@@ -50,11 +50,10 @@
 </article>
 
 <!-- Alertas -->
-
 <!-- TODO: MANEJAR EL TEMA DE LA ANIMACIÓN  -->
 <div class="dialog" *ngIf="dialogIsOpen">
   <h2>¿Seguro que quieres borrar el proyecto?</h2>
-  <p>Esta acción no podrá ser deshecha…</p>
+  <p>Esta acción no se puede deshacer…</p>
   <div class="btn-dialog">
     <button class="btn-primary grow" (click)="hideModal()">Cancelar</button>
     <button class="btn-primary grow" (click)="deleteProject(projectId)">
