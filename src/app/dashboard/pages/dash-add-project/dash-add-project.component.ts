@@ -83,7 +83,7 @@ export class DashAddProjectComponent {
     this.dialogIsOpen = true;
 
     this.dialogMessageH2 = '¿Estás seguro?';
-    this.dialogP = 'Si cancelas, los cambios no se guardarán';
+    this.dialogP = 'Si cancelas, los datos introducidos no se guardarán';
     this.btnOk = 'Cancelar'.toUpperCase();
     this.btnCancel = 'Volver';
   }
@@ -102,7 +102,9 @@ export class DashAddProjectComponent {
       this.dialogIsOpen = true;
       this.dialogMessageH2 = '¡Proyecto guardado!';
       this.dialogP = 'Tu proyecto se ha guardado correctamente';
-    }, 1000);
+      this.btnOk = '';
+      this.btnCancel = '';
+    }, 500);
 
     setTimeout(() => {
       this.dialogIsOpen = false;

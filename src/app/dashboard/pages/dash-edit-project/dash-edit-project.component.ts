@@ -16,6 +16,11 @@ export class DashEditProjectComponent {
   public selectedFileUrl: string | ArrayBuffer | null = null;
   public selectedFile: File | null = null;
   public defaultImageUrl: string = './assets/images/dummy-project.jpg'; // Ruta de la imagen dummy
+  public dialogIsOpen: boolean = false;
+  public dialogMessageH2: string = '';
+  public dialogP: string = '';
+  public btnOk: string = '';
+  public btnCancel: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -122,7 +127,19 @@ export class DashEditProjectComponent {
   }
 
   cancelSubmit() {
-    // TODO: Añadir una alerta de tipo estás seguro de que no quieres guardar?
+    this.dialogIsOpen = true;
+    this.dialogMessageH2 = '¿Estás seguro?';
+    this.dialogP = 'Si cancelas, los cambios no se guardarán';
+    this.btnOk = 'Cancelar'.toUpperCase();
+    this.btnCancel = 'Volver';
+  }
+
+  dontSave() {
+    this.dialogIsOpen = false;
     this.router.navigateByUrl('/atoridashboard');
+  }
+
+  hideModal(): void {
+    this.dialogIsOpen = false;
   }
 }

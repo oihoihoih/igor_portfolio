@@ -145,7 +145,28 @@
   </div>
   <div class="button-group">
     <button class="btn-primary" type="submit">Guardar proyecto</button>
-    <!-- TODO: Añadir una alerta de Estás seguro de que no quieres guardar? -->
-    <button class="btn-primary" (click)="cancelSubmit()">Cancelar</button>
+    <button class="btn-primary" type="button" (click)="cancelSubmit()">
+      Cancelar
+    </button>
   </div>
 </form>
+
+<!-- DIÁLOGO -->
+
+<div class="dialog" *ngIf="dialogIsOpen">
+  <h2>{{ dialogMessageH2 }}</h2>
+  <p>{{ dialogP }}</p>
+  <div class="btn-dialog">
+    <button
+      *ngIf="btnCancel !== ''"
+      class="btn-primary grow"
+      (click)="hideModal()"
+    >
+      {{ btnCancel }}
+    </button>
+    <button *ngIf="btnOk !== ''" class="btn-primary grow" (click)="dontSave()">
+      {{ btnOk }}
+    </button>
+  </div>
+</div>
+<div class="backdrop" *ngIf="dialogIsOpen" (click)="hideModal()"></div>
