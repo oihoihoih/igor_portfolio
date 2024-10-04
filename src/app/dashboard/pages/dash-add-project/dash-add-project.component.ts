@@ -12,6 +12,9 @@ export class DashAddProjectComponent {
   public addProjectForm!: FormGroup;
   public selectedFile: File | null = null;
   public selectedFileUrl: string | ArrayBuffer | null = null;
+  public dialogIsOpen: boolean = false;
+  public dialogMessageH2: string = '';
+  public dialogP: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -74,8 +77,20 @@ export class DashAddProjectComponent {
     });
   }
 
-  cancelSubmit() {
-    //  TODO: Añadir una alerta de Estás seguro de que no quieres guardar?
+  cancel() {
+    this.dialogIsOpen = true;
+
+    this.dialogMessageH2 = '¿Estás seguro?';
+    this.dialogP = 'Si cancelas, los cambios no se guardarán';
+    // this.router.navigateByUrl('/atoridashboard');
+  }
+
+  hideModal(): void {
+    this.dialogIsOpen = false;
+  }
+
+  dontSave() {
+    this.dialogIsOpen = false;
     this.router.navigateByUrl('/atoridashboard');
   }
 }
