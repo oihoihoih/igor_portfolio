@@ -4,8 +4,6 @@ import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjectItemComponent } from './project/project-item/project-item.component';
-import { ProjectListComponent } from './project/project-list/project-list.component';
 
 //HeroIcons
 import { NgIconsModule } from '@ng-icons/core';
@@ -13,7 +11,7 @@ import { featherAirplay } from '@ng-icons/feather-icons';
 import { heroUsers } from '@ng-icons/heroicons/outline';
 
 @NgModule({
-  declarations: [AppComponent, ProjectItemComponent, ProjectListComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
