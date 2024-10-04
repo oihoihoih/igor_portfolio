@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashService } from '../../services/dash.service';
 import { Project } from '../../../model/project';
@@ -11,6 +11,7 @@ import { Project } from '../../../model/project';
 export class DashProjectListComponent {
   public projects: Project[] = [];
   public cargando: boolean = true;
+  // @ViewChild('myDialog') myDialog!: ElementRef<HTMLDialogElement>;
 
   constructor(private dashboardService: DashService, private router: Router) {
     this.getProjects();
@@ -42,4 +43,10 @@ export class DashProjectListComponent {
   editProject(id: string) {
     this.router.navigate(['/atoridashboard/project-edit', id]);
   }
+
+  // SHOW DIALOG
+  // showModal() {
+  //   console.log('prueba');
+  //   this.myDialog.nativeElement.showModal();
+  // }
 }
