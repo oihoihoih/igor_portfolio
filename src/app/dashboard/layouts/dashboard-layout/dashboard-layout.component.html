@@ -1,5 +1,5 @@
-<section class="dashboard">
-  <header>
+<div class="dashboard min-h-screen flex flex-col">
+  <header class="flex justify-between">
     <!-- TODO: Este título tiene que ser dinámico dependiendo del apartado en el que se encuentre -->
     <h1>Dashboard</h1>
 
@@ -8,7 +8,7 @@
     </button>
   </header>
 
-  <section>
+  <section class="grow">
     <router-outlet></router-outlet>
   </section>
-</section>
+</div>
