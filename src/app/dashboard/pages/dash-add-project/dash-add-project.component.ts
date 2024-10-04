@@ -15,6 +15,8 @@ export class DashAddProjectComponent {
   public dialogIsOpen: boolean = false;
   public dialogMessageH2: string = '';
   public dialogP: string = '';
+  public btnOk: string = '';
+  public btnCancel: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -69,7 +71,7 @@ export class DashAddProjectComponent {
     this.dashService.uploadFile(formData).subscribe({
       next: (resp) => {
         console.log('Archivo subido correctamente', resp);
-        this.router.navigateByUrl('/atoridashboard');
+        this.openDialog();
       },
       error: (error) => {
         console.error('Error al subir el archivo', error);
@@ -82,7 +84,8 @@ export class DashAddProjectComponent {
 
     this.dialogMessageH2 = '¿Estás seguro?';
     this.dialogP = 'Si cancelas, los cambios no se guardarán';
-    // this.router.navigateByUrl('/atoridashboard');
+    this.btnOk = 'Cancelar'.toUpperCase();
+    this.btnCancel = 'Volver';
   }
 
   hideModal(): void {
@@ -92,5 +95,18 @@ export class DashAddProjectComponent {
   dontSave() {
     this.dialogIsOpen = false;
     this.router.navigateByUrl('/atoridashboard');
+  }
+
+  openDialog() {
+    setTimeout(() => {
+      this.dialogIsOpen = true;
+      this.dialogMessageH2 = '¡Proyecto guardado!';
+      this.dialogP = 'Tu proyecto se ha guardado correctamente';
+    }, 1000);
+
+    setTimeout(() => {
+      this.dialogIsOpen = false;
+      this.router.navigateByUrl('/atoridashboard');
+    }, 3000);
   }
 }

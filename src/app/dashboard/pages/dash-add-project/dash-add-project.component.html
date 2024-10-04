@@ -186,8 +186,16 @@
   <h2>{{ dialogMessageH2 }}</h2>
   <p>{{ dialogP }}</p>
   <div class="btn-dialog">
-    <button class="btn-primary grow" (click)="hideModal()">Cancelar</button>
-    <button class="btn-primary grow" (click)="dontSave()">Aeptar</button>
+    <button
+      *ngIf="btnCancel !== ''"
+      class="btn-primary grow"
+      (click)="hideModal()"
+    >
+      {{ btnCancel }}
+    </button>
+    <button *ngIf="btnOk !== ''" class="btn-primary grow" (click)="dontSave()">
+      {{ btnOk }}
+    </button>
   </div>
 </div>
 <div class="backdrop" *ngIf="dialogIsOpen" (click)="hideModal()"></div>
