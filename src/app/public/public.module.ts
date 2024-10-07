@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { PublicRoutingModule } from './public-routing.module';
 import { PublicLayoutComponent } from './layouts/public-layout/public-layout.component';
 import { HomeComponent } from './pages/home/home.component';
+import { HeaderComponent } from './shared/header/header.component';
 
 
 @NgModule({
   declarations: [
     PublicLayoutComponent,
-    HomeComponent
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
