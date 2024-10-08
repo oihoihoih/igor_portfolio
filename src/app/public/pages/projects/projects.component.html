@@ -5,7 +5,7 @@
       <h2>{{ project.title }}</h2>
       <p>{{ project.year }}</p>
     </header>
-    <section>
+    <section class="project-details">
       <div>
         <h3>DIR:</h3>
         <p>{{ project.director }}</p>
@@ -15,7 +15,7 @@
         <p>{{ project.dop }}</p>
       </div>
     </section>
-    <section>
+    <section class="project-image">
       <figure><img [src]="project.img" alt="Project image" /></figure>
       <div>
         <p>{{ project.category }}</p>

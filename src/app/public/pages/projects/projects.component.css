@@ -1,3 +1,66 @@
 main {
+  background-color: var(--dark);
   padding: 4rem;
+  color: var(--light);
+  font-variation-settings: "wgth" 100;
+}
+
+h1 {
+  font-variation-settings: "wght" 100;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-variation-settings: "wght" 100;
+  padding: 1rem 0;
+}
+
+article {
+  border-top: 1px solid var(--light);
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.project-details div {
+  display: flex;
+}
+
+.project-details div h3 {
+  width: 8rem;
+  letter-spacing: 1px;
+}
+
+.project-image {
+  width: 100%;
+  display: flex;
+  padding-top: 2.4rem;
+}
+
+.project-image figure {
+  width: 50%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.project-image div {
+  width: 50%;
+  padding-left: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-image a {
+  text-align: right;
+  text-transform: uppercase;
+  font-size: var(--font-size--small);
+  font-variation-settings: "wght" 400;
 }
