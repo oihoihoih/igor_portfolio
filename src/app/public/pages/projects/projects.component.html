@@ -1,25 +1,25 @@
 <main>
   <h1>Projects</h1>
-  <article>
+  <article *ngFor="let project of projects">
     <header>
-      <h2>Project title</h2>
-      <p>Project year</p>
+      <h2>{{ project.title }}</h2>
+      <p>{{ project.year }}</p>
     </header>
     <section>
       <div>
         <h3>DIR:</h3>
-        <p>Directors of project</p>
+        <p>{{ project.director }}</p>
       </div>
       <div>
         <h3>DOP:</h3>
-        <p>Director of photography</p>
+        <p>{{ project.dop }}</p>
       </div>
     </section>
     <section>
-      <figure><img src="" alt="Project image" /></figure>
+      <figure><img [src]="project.img" alt="Project image" /></figure>
       <div>
-        <p>Category</p>
-        <a href="">Watch trailer</a>
+        <p>{{ project.category }}</p>
+        <a [href]="project.trailerUrl" target="_blank">Watch trailer</a>
       </div>
     </section>
   </article>
