@@ -1,11 +1,15 @@
 <main>
   <h1>Projects</h1>
   <article *ngFor="let project of projects">
-    <header>
+    <header
+      (click)="
+        collapsedStates[project._id] ? expand(project._id) : toggle(project._id)
+      "
+    >
       <h2>{{ project.title }}</h2>
       <p>{{ project.year }}</p>
     </header>
-    <div class="collapsable">
+    <div class="collapsible" [@collapse]="collapsedStates[project._id]">
       <section class="project-details">
         <div>
           <h3>DIR:</h3>
