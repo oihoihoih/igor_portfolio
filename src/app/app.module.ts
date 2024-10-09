@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,7 @@ import { heroUsers } from '@ng-icons/heroicons/outline';
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgIconsModule.withIcons({ featherAirplay, heroUsers }),
   ],

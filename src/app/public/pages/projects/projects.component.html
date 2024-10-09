@@ -5,22 +5,24 @@
       <h2>{{ project.title }}</h2>
       <p>{{ project.year }}</p>
     </header>
-    <section class="project-details">
-      <div>
-        <h3>DIR:</h3>
-        <p>{{ project.director }}</p>
-      </div>
-      <div>
-        <h3>DOP:</h3>
-        <p>{{ project.dop }}</p>
-      </div>
-    </section>
-    <section class="project-image">
-      <figure><img [src]="project.img" alt="Project image" /></figure>
-      <div>
-        <p>{{ project.category }}</p>
-        <a [href]="project.trailerUrl" target="_blank">Watch trailer</a>
-      </div>
-    </section>
+    <div class="collapsable">
+      <section class="project-details">
+        <div>
+          <h3>DIR:</h3>
+          <p>{{ project.director }}</p>
+        </div>
+        <div>
+          <h3>DOP:</h3>
+          <p>{{ project.dop }}</p>
+        </div>
+      </section>
+      <section class="project-image">
+        <figure><img [src]="project.img" alt="Project image" /></figure>
+        <div>
+          <p>{{ project.category }}</p>
+          <a [href]="project.trailerUrl" target="_blank">Watch trailer</a>
+        </div>
+      </section>
+    </div>
   </article>
 </main>
