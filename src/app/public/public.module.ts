@@ -9,7 +9,6 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 
-
 @NgModule({
   declarations: [
     PublicLayoutComponent,
@@ -17,11 +16,8 @@ import { ProjectsComponent } from './pages/projects/projects.component';
     HeaderComponent,
     AboutComponent,
     ContactComponent,
-    ProjectsComponent
+    ProjectsComponent,
   ],
-  imports: [
-    CommonModule,
-    PublicRoutingModule
-  ]
+  imports: [CommonModule, PublicRoutingModule],
 })
-export class PublicModule { }
+export class PublicModule {}

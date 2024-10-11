@@ -11,21 +11,21 @@ const routes: Routes = [
     path: '',
     component: PublicLayoutComponent,
     children: [
-      { path: '', component: HomeComponent, data: { animation: 'top' } },
+      { path: '', component: HomeComponent, data: { animation: 'isTop' } },
       {
         path: 'contact',
         component: ContactComponent,
-        data: { animation: 'left' },
+        data: { animation: 'isLeft' },
       },
       {
         path: 'about',
         component: AboutComponent,
-        data: { animation: 'bottom' },
+        data: { animation: 'isBottom' },
       },
       {
         path: 'projects',
         component: ProjectsComponent,
-        data: { animation: 'right' },
+        data: { animation: 'isRight' },
       },
       { path: '**', redirectTo: '' }, // Redirigir cualquier otra ruta a la página principal pública
     ],
