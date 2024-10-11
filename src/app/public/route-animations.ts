@@ -61,6 +61,7 @@ function slideTo(direction: string) {
           top: 0,
           [direction]: 0,
           width: '100%',
+          zIndex: 1,
         }),
       ],
       optional

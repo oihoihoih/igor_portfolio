@@ -25,6 +25,7 @@ body {
   font-family: "sarvatrik-latin-variable", sans-serif;
   font-size: var(--font-size--default);
   font-variation-settings: "wght" 400;
+  overflow: hidden;
   /* color: var(--light); */
 }
 
