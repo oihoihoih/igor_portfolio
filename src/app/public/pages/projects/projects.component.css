@@ -29,6 +29,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  cursor: pointer;
 }
 
 .project-details div {
@@ -53,6 +54,13 @@ header {
   background-position: center;
 }
 
+.project-image figure img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Asegura que la imagen siempre encaje */
+  display: block;
+}
+
 .project-image div {
   width: 50%;
   padding-left: 1.6rem;
@@ -66,8 +74,4 @@ header {
   text-transform: uppercase;
   font-size: var(--font-size--small);
   font-variation-settings: "wght" 400;
-}
-
-.collapsible {
-  overflow: hidden;
 }

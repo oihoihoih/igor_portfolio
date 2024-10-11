@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { fader, slider } from '../../route-animations';
+import { slider } from '../../route-animations';
 
 @Component({
   selector: 'app-public-layout',
@@ -17,7 +17,6 @@ export class PublicLayoutComponent {
   }
 
   prepareRoute(outlet: RouterOutlet) {
-    console.log(outlet);
     return (
       outlet &&
       outlet.activatedRouteData &&

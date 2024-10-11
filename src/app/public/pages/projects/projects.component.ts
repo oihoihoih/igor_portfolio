@@ -18,8 +18,18 @@ const DEFAULT_DURATION = 300;
   styleUrl: './projects.component.css',
   animations: [
     trigger('collapse', [
-      state('false', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
-      state('true', style({ height: '0', visibility: 'hidden' })),
+      state(
+        'false',
+        style({
+          height: AUTO_STYLE,
+          visibility: AUTO_STYLE,
+          overflow: 'hidden',
+        })
+      ),
+      state(
+        'true',
+        style({ height: '0', visibility: 'hidden', overflow: 'hidden' })
+      ),
       transition('false => true', animate(DEFAULT_DURATION + 'ms ease-in')),
       transition('true => false', animate(DEFAULT_DURATION + 'ms ease-out')),
     ]),
