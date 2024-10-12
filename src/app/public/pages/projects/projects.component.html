@@ -7,7 +7,7 @@
       <p>{{ project.year }}</p>
     </header>
     <!-- <div class="collapsible" [@collapse]="collapsedStates[project._id]"> -->
-    <div class="collapsible" [@slideInOut]="animationState">
+    <div class="collapsible" [@slideInOut]="animationState[project._id]">
       <section class="project-details">
         <div>
           <h3>DIR:</h3>

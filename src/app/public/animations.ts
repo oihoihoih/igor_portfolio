@@ -15,9 +15,10 @@ export const SlideInOutAnimation = [
     state(
       'in',
       style({
-        'max-height': '500px',
+        height: '*',
         opacity: '1',
         visibility: 'visible',
+        overflow: 'visible',
       })
     ),
     state(
@@ -26,6 +27,7 @@ export const SlideInOutAnimation = [
         'max-height': '0px',
         opacity: '0',
         visibility: 'hidden',
+        overflow: 'hidden',
       })
     ),
     transition('in => out', [

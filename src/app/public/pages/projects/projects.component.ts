@@ -13,13 +13,13 @@ import { SlideInOutAnimation } from '../../animations';
 export class ProjectsComponent {
   public projects: Project[] = [];
   private lastId: string = '';
-  public animationState = 'out';
+  public animationState: { [key: string]: 'in' | 'out' } = {};
 
   constructor(private dashService: DashService) {
     this.dashService.getAllProjects().subscribe((res) => {
       this.projects = res.map((project) => {
         project.img = this.getImageUrl(project.img);
-
+        this.animationState[project._id] = 'out';
         return project;
       });
       console.log('proyecto', this.projects);
@@ -33,6 +33,12 @@ export class ProjectsComponent {
   }
 
   open(id: string) {
-    this.animationState = this.animationState === 'out' ? 'in' : 'out';
+    // Cerrar el proyecto anterior
+    if (this.lastId) {
+      this.animationState[this.lastId] = 'out';
+    }
+    // Abrir el proyecto
+    this.animationState[id] = this.animationState[id] === 'in' ? 'out' : 'in';
+    this.lastId = id;
   }
 }
