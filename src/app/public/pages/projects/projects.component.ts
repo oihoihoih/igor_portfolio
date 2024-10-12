@@ -37,8 +37,10 @@ export class ProjectsComponent {
     if (this.lastId) {
       this.animationState[this.lastId] = 'out';
     }
-    // Abrir el proyecto
-    this.animationState[id] = this.animationState[id] === 'in' ? 'out' : 'in';
-    this.lastId = id;
+    setTimeout(() => {
+      // Abrir el proyecto
+      this.animationState[id] = this.animationState[id] === 'in' ? 'out' : 'in';
+      this.lastId = id;
+    }, 500);
   }
 }

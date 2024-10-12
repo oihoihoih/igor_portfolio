@@ -33,46 +33,24 @@ export const SlideInOutAnimation = [
     transition('in => out', [
       group([
         animate(
-          '400ms ease-in-out',
+          '200ms ease-in-out',
           style({
             opacity: '0',
-          })
-        ),
-        animate(
-          '600ms ease-in-out',
-          style({
             'max-height': '0px',
-          })
-        ),
-        animate(
-          '700ms ease-in-out',
-          style({
             visibility: 'hidden',
           })
         ),
       ]),
     ]),
     transition('out => in', [
-      group([
-        animate(
-          '1ms ease-in-out',
-          style({
-            visibility: 'visible',
-          })
-        ),
-        animate(
-          '600ms ease-in-out',
-          style({
-            'max-height': '500px',
-          })
-        ),
-        animate(
-          '800ms ease-in-out',
-          style({
-            opacity: '1',
-          })
-        ),
-      ]),
+      animate(
+        '300ms ease-in-out',
+        style({
+          visibility: 'visible',
+          'max-height': '500px',
+          opacity: '1',
+        })
+      ),
     ]),
   ]),
 ];
