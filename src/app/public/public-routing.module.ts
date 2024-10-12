@@ -25,7 +25,7 @@ const routes: Routes = [
       {
         path: 'projects',
         component: ProjectsComponent,
-        data: { animation: 'isRight' },
+        data: { animation: 'isLeft' },
       },
       { path: '**', redirectTo: '' }, // Redirigir cualquier otra ruta a la página principal pública
     ],

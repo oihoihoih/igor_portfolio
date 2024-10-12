@@ -2,15 +2,12 @@
   <!-- TODO: Diferenciar un poco más el título de la página -->
   <h1>Projects</h1>
   <article *ngFor="let project of projects">
-    <header
-      (click)="
-        collapsedStates[project._id] ? expand(project._id) : toggle(project._id)
-      "
-    >
+    <header (click)="open(project._id)">
       <h2>{{ project.title }}</h2>
       <p>{{ project.year }}</p>
     </header>
-    <div class="collapsible" [@collapse]="collapsedStates[project._id]">
+    <!-- <div class="collapsible" [@collapse]="collapsedStates[project._id]"> -->
+    <div class="collapsible" [@slideInOut]="animationState">
       <section class="project-details">
         <div>
           <h3>DIR:</h3>
