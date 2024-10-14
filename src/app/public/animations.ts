@@ -5,9 +5,6 @@ import {
   transition,
   animate,
   group,
-  query,
-  stagger,
-  keyframes,
 } from '@angular/animations';
 
 export const SlideInOutAnimation = [
@@ -15,7 +12,7 @@ export const SlideInOutAnimation = [
     state(
       'in',
       style({
-        height: '*',
+        height: '*', // Cambiamos a 'height' en lugar de 'max-height'
         opacity: '1',
         visibility: 'visible',
         overflow: 'visible',
@@ -24,7 +21,7 @@ export const SlideInOutAnimation = [
     state(
       'out',
       style({
-        'max-height': '0px',
+        height: '0px', // Usamos 'height' para mayor fluidez
         opacity: '0',
         visibility: 'hidden',
         overflow: 'hidden',
@@ -33,24 +30,26 @@ export const SlideInOutAnimation = [
     transition('in => out', [
       group([
         animate(
-          '200ms ease-in-out',
+          '300ms ease-in-out',
           style({
             opacity: '0',
-            'max-height': '0px',
+            height: '0px', // Anima 'height' en lugar de 'max-height'
             visibility: 'hidden',
           })
         ),
       ]),
     ]),
     transition('out => in', [
-      animate(
-        '300ms ease-in-out',
-        style({
-          visibility: 'visible',
-          'max-height': '500px',
-          opacity: '1',
-        })
-      ),
+      group([
+        animate(
+          '400ms ease-in-out',
+          style({
+            visibility: 'visible',
+            height: '*', // Cambiamos a '*' para hacer la animación más fluida
+            opacity: '1',
+          })
+        ),
+      ]),
     ]),
   ]),
 ];
