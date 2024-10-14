@@ -11,7 +11,13 @@ const routes: Routes = [
     path: '',
     component: PublicLayoutComponent,
     children: [
-      { path: '', component: HomeComponent, data: { animation: 'isTop' } },
+      {
+        path: '',
+        component: HomeComponent,
+        data: {
+          animation: 'isTop',
+        },
+      },
       {
         path: 'contact',
         component: ContactComponent,
@@ -25,9 +31,9 @@ const routes: Routes = [
       {
         path: 'projects',
         component: ProjectsComponent,
-        data: { animation: 'isLeft' },
+        data: { animation: 'isRight' },
       },
-      { path: '**', redirectTo: '' }, // Redirigir cualquier otra ruta a la página principal pública
+      //{ path: '**', redirectTo: '' }, // Redirigir cualquier otra ruta a la página principal pública
     ],
   },
 ];

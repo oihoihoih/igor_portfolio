@@ -41,25 +41,21 @@ export const fader = trigger('routeAnimations', [
 ]);
 
 export const slider = trigger('routeAnimations', [
-  transition('* => isLeft', slideTo('left')),
+  // Cuando entra la página
   transition('* => isRight', slideTo('right')),
+  transition('* => isLeft', slideTo('left')),
   transition('* => isTop', slideTo('top')),
   transition('* => isBottom', slideTo('bottom')),
-  transition('isLeft => *', slideTo('left')),
-  transition('isRight => *', slideTo('right')),
-  transition('isTop => *', slideTo('top')),
-  transition('isBottom => *', slideTo('bottom')),
 ]);
 
 function slideTo(direction: string) {
-  console.log('animation', direction);
   const optional = { optional: true };
   return [
     query(
       ':enter, :leave',
       [
         style({
-          position: 'absolute',
+          position: 'fixed',
           top: 0,
           [direction]: 0,
           width: '100%',
@@ -68,12 +64,8 @@ function slideTo(direction: string) {
       optional
     ),
     query(':enter', [style({ [direction]: '-100%' })]),
-    query(':enter', [animate('2600ms ease', style({ [direction]: '0%' }))]),
-
-    // Normalize the page style... Might not be necessary
-    //
-    // Required only if you have child animations on the page
-    // query(':leave', animateChild()),
-    // query(':enter', animateChild()),
+    query(':enter', [
+      animate('400ms ease-in-out', style({ [direction]: '0%' })),
+    ]),
   ];
 }
