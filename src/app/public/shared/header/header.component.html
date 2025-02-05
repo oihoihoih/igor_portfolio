@@ -1,0 +1,16 @@
+<nav>
+  <ul class="main-navigation">
+    <li id="top" (click)="onSectionClick('home')">
+      <a routerLink="/home" routerLinkActive="active">Home</a>
+    </li>
+    <li id="right" (click)="onSectionClick('projects')">
+      <a routerLink="/projects" routerLinkActive="active">Projects</a>
+    </li>
+    <li id="bottom" (click)="onSectionClick('about')">
+      <a routerLink="/about" routerLinkActive="active">About</a>
+    </li>
+    <li id="left" (click)="onSectionClick('contact')">
+      <a routerLink="/contact" routerLinkActive="active">Contact</a>
+    </li>
+  </ul>
+</nav>

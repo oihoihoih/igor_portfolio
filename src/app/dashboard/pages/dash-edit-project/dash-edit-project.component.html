@@ -1,0 +1,172 @@
+<form
+  *ngIf="editProjectForm"
+  [formGroup]="editProjectForm"
+  (ngSubmit)="onSubmit()"
+>
+  <h2>Editar proyecto</h2>
+  <p>
+    Todos los campos que contengan un asterisco
+    <strong><span aria-label="required">*</span></strong> son obligatorios
+  </p>
+  <div class="input-box">
+    <label for="title">
+      <span>Título del proyecto: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input type="text" id="title" name="title" formControlName="title" />
+    <div
+      class="txt-alert"
+      *ngIf="
+      editProjectForm.get('title')?.errors?.['required'] &&
+      (editProjectForm.get('title')?.dirty ||
+      editProjectForm.get('title')?.touched)
+    "
+    >
+      El campo del título es obligatorio.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="year">
+      <span>Año: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input type="number" id="year" name="year" formControlName="year" />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('year')?.errors?.['required'] &&
+    (editProjectForm.get('year')?.dirty ||
+    editProjectForm.get('year')?.touched)
+  "
+    >
+      Es obligatorio añadir un año.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="director">
+      <span>Director: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="string"
+      id="director"
+      name="director"
+      formControlName="director"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('director')?.errors?.['required'] &&
+    (editProjectForm.get('director')?.dirty ||
+    editProjectForm.get('director')?.touched)
+  "
+    >
+      Es obligatorio añadir uno o varios directores.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="dop">
+      <span>DOP: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input type="string" id="dop" name="dop" formControlName="dop" />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('dop')?.errors?.['required'] &&
+    (editProjectForm.get('dop')?.dirty ||
+    editProjectForm.get('dop')?.touched)
+  "
+    >
+      Es obligatorio añadir uno varios DOP.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="category">
+      <span>Género de la película: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <input
+      type="string"
+      id="category"
+      name="category"
+      formControlName="category"
+    />
+    <div
+      class="txt-alert"
+      *ngIf="
+    editProjectForm.get('category')?.errors?.['required'] &&
+    (editProjectForm.get('category')?.dirty ||
+    editProjectForm.get('category')?.touched)
+  "
+    >
+      Es obligatorio añadir al menos un género de la película.
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="img">
+      <span>Imagen: </span>
+      <strong><span aria-label="required">*</span></strong>
+    </label>
+    <!-- TODO: Ver si se puede cambiar el estilo del botón -->
+    <input type="file" id="img" name="img" (change)="onFileChange($event)" />
+    <div
+      class="txt-alert"
+      *ngIf="
+      editProjectForm.get('img')?.errors?.['required'] &&
+      (editProjectForm.get('img')?.dirty ||
+      editProjectForm.get('img')?.touched)
+    "
+    >
+      Es obligatorio añadir una imagen.
+    </div>
+
+    <!-- Mostrar imagen actual o dummy -->
+    <div *ngIf="selectedFileUrl">
+      <img [src]="" alt="Previsualización" width="200px" />
+    </div>
+  </div>
+
+  <div class="input-box">
+    <label for="trailerUrl">
+      <span>Url del trailer: </span>
+    </label>
+    <input
+      type="string"
+      id="trailerUrl"
+      name="trailerUrl"
+      formControlName="trailerUrl"
+    />
+  </div>
+  <div class="button-group">
+    <button class="btn-primary" type="submit">Guardar proyecto</button>
+    <button class="btn-primary" type="button" (click)="cancelSubmit()">
+      Cancelar
+    </button>
+  </div>
+</form>
+
+<!-- DIÁLOGO -->
+
+<div class="dialog" *ngIf="dialogIsOpen">
+  <h2>{{ dialogMessageH2 }}</h2>
+  <p>{{ dialogP }}</p>
+  <div class="btn-dialog">
+    <button
+      *ngIf="btnCancel !== ''"
+      class="btn-primary grow"
+      (click)="hideModal()"
+    >
+      {{ btnCancel }}
+    </button>
+    <button *ngIf="btnOk !== ''" class="btn-primary grow" (click)="dontSave()">
+      {{ btnOk }}
+    </button>
+  </div>
+</div>
+<div class="backdrop" *ngIf="dialogIsOpen" (click)="hideModal()"></div>

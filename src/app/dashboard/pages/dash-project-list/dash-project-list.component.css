@@ -1,0 +1,23 @@
+li {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 1.6rem 0;
+  border-bottom: solid 1px var(--aux-dark);
+}
+
+.project-title {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-crud > ng-icon {
+  margin-left: 1.6rem;
+  cursor: pointer;
+}
+
+.btn-circle > ng-icon {
+  transform: scale(1.5);
+}

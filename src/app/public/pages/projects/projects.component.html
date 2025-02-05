@@ -1,0 +1,39 @@
+<main>
+  <!-- TODO: Diferenciar un poco más el título de la página -->
+  <h1>Projects</h1>
+  <article *ngFor="let project of projects">
+    <header (click)="open(project._id)">
+      <h2>{{ project.title }}</h2>
+      <p>{{ project.year }}</p>
+    </header>
+
+    <!-- <div class="collapsible" [@slideInOut]="animationState[project._id]"> -->
+    <div class="collapsible" [class.visible]="visibility[project._id]">
+      <section class="project-details">
+        <div>
+          <h3>DIR:</h3>
+          <p>{{ project.director }}</p>
+        </div>
+        <div>
+          <h3>DOP:</h3>
+          <p>{{ project.dop }}</p>
+        </div>
+      </section>
+      <section class="project-image">
+        <figure><img [src]="project.img" alt="Project image" /></figure>
+        <div>
+          <p>{{ project.category }}</p>
+          <!-- <a [href]="project.trailerUrl" target="_blank">Watch trailer</a> -->
+
+          <a (click)="openModal()">Watch trailer</a>
+        </div>
+      </section>
+    </div>
+  </article>
+  <ng-template cdkPortal>
+    <app-project-trailer></app-project-trailer>
+  </ng-template>
+</main>
+
+<!-- Angular cdk Overlay:
+ https://www.youtube.com/watch?v=S7d2zvbFKhs&list=PLp-SHngyo0_iun9oglT2boNYebJ1Yv-GT&index=1 -->

@@ -1,0 +1,62 @@
+#top,
+#bottom,
+#left,
+#right {
+  background: var(--dark);
+  position: fixed;
+}
+
+#left,
+#right {
+  top: 0;
+  bottom: 0;
+  width: 4rem;
+}
+#left {
+  left: 0;
+}
+#right {
+  right: 0;
+}
+
+#top,
+#bottom {
+  left: 0;
+  right: 0;
+  height: 4rem;
+}
+#top {
+  top: 0;
+}
+#bottom {
+  bottom: 0;
+}
+
+li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#right a {
+  transform: rotate(-0.25turn);
+  text-transform: uppercase;
+}
+
+#left a {
+  transform: rotate(0.25turn);
+}
+
+.main-navigation li a {
+  text-transform: uppercase;
+  color: var(--light);
+}
+
+nav {
+  position: absolute;
+  z-index: 1000;
+}
+
+main {
+  z-index: 1;
+}

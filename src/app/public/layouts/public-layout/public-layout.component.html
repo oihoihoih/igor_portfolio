@@ -1,0 +1,22 @@
+<nav>
+  <ul class="main-navigation">
+    <li id="top">
+      <a [routerLink]="['/home']" routerLinkActive="active">Home</a>
+    </li>
+
+    <li id="right">
+      <a [routerLink]="['/projects']" routerLinkActive="active">Projects</a>
+    </li>
+
+    <li id="bottom">
+      <a [routerLink]="['/about']" routerLinkActive="active">About</a>
+    </li>
+    <li id="left">
+      <a [routerLink]="['/contact']" routerLinkActive="active">Contact</a>
+    </li>
+  </ul>
+</nav>
+
+<main [@routeAnimations]="prepareRoute(outlet)">
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
