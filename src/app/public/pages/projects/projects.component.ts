@@ -2,8 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { DashService } from '../../../dashboard/services/dash.service';
 import { Project } from '../../../model/project';
 import { SlideInOutAnimation } from '../../animations';
-import { Overlay } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
+import { ProjectTrailerComponent } from './project-trailer/project-trailer.component';
 
 @Component({
   selector: 'app-projects',
@@ -58,9 +59,19 @@ export class ProjectsComponent {
     }, 500);
   }
 
-  openModal() {
-    console.log('Modal');
-    const overlayRef = this.overlay.create();
+  openModal(project: Project) {
+    // Configuración del Overlay
+    const config = new OverlayConfig({
+      positionStrategy: this.overlay
+        .position()
+        .global()
+        .centerHorizontally()
+        .centerVertically(),
+      hasBackdrop: true,
+    });
+
+    const overlayRef = this.overlay.create(config);
     overlayRef.attach(this.portal);
+    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
   }
 }

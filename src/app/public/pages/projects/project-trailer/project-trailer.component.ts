@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Project } from '../../../../model/project';
 
 @Component({
   selector: 'app-project-trailer',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './project-trailer.component.css',
 })
 export class ProjectTrailerComponent {
+  @Input({ required: true }) project!: Project;
   public trailer = 'Trailer url';
 }

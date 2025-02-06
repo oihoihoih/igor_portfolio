@@ -1,10 +1,10 @@
+/* Import Overlay cdk */
+@import "@angular/cdk/overlay-prebuilt.css";
+
 /* Import Tailwind CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Import Overlay cdk */
-@import "@angular/cdk/overlay-prebuilt.css";
 
 :root {
   --dark: #333333;

@@ -25,15 +25,15 @@
           <p>{{ project.category }}</p>
           <!-- <a [href]="project.trailerUrl" target="_blank">Watch trailer</a> -->
 
-          <a (click)="openModal()">Watch trailer</a>
+          <a (click)="openModal(project)">Watch trailer</a>
         </div>
       </section>
     </div>
-  </article>
-  <ng-template cdkPortal>
-    <app-project-trailer></app-project-trailer>
-  </ng-template>
-</main>
 
+    <ng-template cdkPortal>
+      <app-project-trailer [project]="project"></app-project-trailer>
+    </ng-template>
+  </article>
+</main>
 <!-- Angular cdk Overlay:
  https://www.youtube.com/watch?v=S7d2zvbFKhs&list=PLp-SHngyo0_iun9oglT2boNYebJ1Yv-GT&index=1 -->

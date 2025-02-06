@@ -1,1 +1,24 @@
-<p>project-trailer works!</p>
+<main>
+  <!-- TODO: Hacer que el h1 sea un breadcrumb -->
+  <h1>Projects / Trailer</h1>
+  <!-- TODO: Añadir X para cerrar el overlay -->
+  <article>
+    <section>Aquí irá incrustado el trailer</section>
+    <section>
+      <header>
+        <h2>{{ project.title }}</h2>
+        <p>{{ project.year }}</p>
+      </header>
+    </section>
+    <section class="project-details">
+      <div>
+        <h3>DIR:</h3>
+        <p>{{ project.director }}</p>
+      </div>
+      <div>
+        <h3>DOP:</h3>
+        <p>{{ project.dop }}</p>
+      </div>
+    </section>
+  </article>
+</main>
