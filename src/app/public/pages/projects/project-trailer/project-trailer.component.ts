@@ -1,6 +1,12 @@
-import { Component, Input, HostBinding } from '@angular/core';
+import { Component, Input, HostBinding, AfterViewInit } from '@angular/core';
 import { Project } from '../../../../model/project';
-import { animate, style, transition, trigger } from '@angular/animations';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-project-trailer',
@@ -10,20 +16,26 @@ import { animate, style, transition, trigger } from '@angular/animations';
   styleUrl: './project-trailer.component.css',
   animations: [
     trigger('animation', [
-      transition(':enter', [
-        style({ opacity: 0, scale: 0.8 }),
-        animate('150ms ease-in-out', style({ opacity: 1, scale: 1 })),
-      ]),
-      transition(':leave', [
-        style({ opacity: 0, scale: 1 }),
-        animate('150ms ease-in-out', style({ opacity: 0, scale: 0.8 })),
-      ]),
+      state('hidden', style({ opacity: 0, scale: 0.8 })),
+      state('visible', style({ opacity: 1, scale: 1 })),
+      transition('hidden <=> visible', animate('150ms ease-in-out')),
     ]),
   ],
 })
-export class ProjectTrailerComponent {
+export class ProjectTrailerComponent implements AfterViewInit {
   @Input({ required: true }) project!: Project;
-  @HostBinding('@animation') animationState = true;
+  @HostBinding('@animation') animationState = 'hidden';
+
+  ngAfterViewInit() {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+
+    this.animationState = 'visible';
+  }
+
+  close() {
+    this.animationState = 'hidden';
+  }
 
   public trailer = 'Trailer url';
 }
