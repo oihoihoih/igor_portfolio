@@ -23,7 +23,6 @@
         <figure><img [src]="project.img" alt="Project image" /></figure>
         <div>
           <p>{{ project.category }}</p>
-          <!-- <a [href]="project.trailerUrl" target="_blank">Watch trailer</a> -->
 
           <a (click)="openModal(project)">Watch trailer</a>
         </div>
@@ -31,7 +30,10 @@
     </div>
 
     <ng-template cdkPortal>
-      <app-project-trailer [project]="project"></app-project-trailer>
+      <app-project-trailer
+        [project]="projectOutput"
+        (closeOverlay)="closeOverlay()"
+      ></app-project-trailer>
     </ng-template>
   </article>
 </main>

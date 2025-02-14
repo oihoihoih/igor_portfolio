@@ -2,9 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { DashService } from '../../../dashboard/services/dash.service';
 import { Project } from '../../../model/project';
 import { SlideInOutAnimation } from '../../animations';
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
-import { ProjectTrailerComponent } from './project-trailer/project-trailer.component';
 
 @Component({
   selector: 'app-projects',
@@ -18,6 +17,8 @@ export class ProjectsComponent {
   private lastId: string = '';
   public visibility: { [key: string]: boolean } = {};
   @ViewChild(CdkPortal) portal!: CdkPortal;
+  public projectOutput!: Project;
+  private overlayRef: OverlayRef | null = null;
 
   constructor(private dashService: DashService, private overlay: Overlay) {
     this.dashService.getAllProjects().subscribe((res) => {
@@ -37,18 +38,6 @@ export class ProjectsComponent {
     return `${backendUrl}${img}`;
   }
 
-  // open(id: string) {
-  //   // Cerrar el proyecto anterior
-  //   if (this.lastId) {
-  //     this.animationState[this.lastId] = 'out';
-  //   }
-  //   setTimeout(() => {
-  //     // Abrir el proyecto
-  //     this.animationState[id] = this.animationState[id] === 'in' ? 'out' : 'in';
-  //     this.lastId = id;
-  //   }, 500);
-  // }
-
   open(id: string) {
     if (this.lastId) {
       this.visibility[this.lastId] = !this.visibility[this.lastId];
@@ -60,6 +49,8 @@ export class ProjectsComponent {
   }
 
   openModal(project: Project) {
+    this.projectOutput = project;
+    console.log('componente principal', project);
     // Configuración del Overlay
     const config = new OverlayConfig({
       positionStrategy: this.overlay
@@ -67,11 +58,16 @@ export class ProjectsComponent {
         .global()
         .centerHorizontally()
         .centerVertically(),
-      hasBackdrop: true,
+      hasBackdrop: false,
     });
 
-    const overlayRef = this.overlay.create(config);
-    overlayRef.attach(this.portal);
-    overlayRef.backdropClick().subscribe(() => overlayRef.detach());
+    this.overlayRef = this.overlay.create(config);
+    this.overlayRef.attach(this.portal);
+  }
+
+  closeOverlay() {
+    if (this.overlayRef) {
+      this.overlayRef.dispose(); // 🔥 Cierra el overlay cuando el hijo emite el evento
+    }
   }
 }

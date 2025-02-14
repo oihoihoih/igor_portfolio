@@ -7,14 +7,28 @@
       <span class="cdk-visually-hidden" (click)="close()">Close</span>
     </button>
   </header>
+
   <article>
-    <section>Aquí irá incrustado el trailer</section>
+    <section class="trailer-container">
+      <iframe
+        width="260"
+        height="315"
+        [src]="sanitizedVideoUrl"
+        frameborder="0"
+        allowfullscreen
+      >
+      </iframe>
+
+      {{ project.trailerUrl }}
+    </section>
+
     <section>
       <header>
         <h2>{{ project.title }}</h2>
         <p>{{ project.year }}</p>
       </header>
     </section>
+
     <section class="project-details">
       <div>
         <h3>DIR:</h3>
