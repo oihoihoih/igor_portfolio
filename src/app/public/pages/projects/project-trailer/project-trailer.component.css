@@ -1,7 +1,7 @@
 main {
   background-color: var(--dark);
-  width: calc(100vw - 12rem);
-  height: calc(100vh - 12rem);
+  width: calc(100vw - 8rem);
+  height: calc(100vh - 8rem);
   color: var(--light);
   font-variation-settings: "wgth" 100;
   display: flex;
@@ -37,8 +37,16 @@ header {
 }
 
 .trailer-container {
+  width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /* background-color: red; */
+}
+
+.trailer-container iframe {
+  width: 100%;
 }
 
 .project-details div {

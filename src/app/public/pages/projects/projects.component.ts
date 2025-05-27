@@ -50,7 +50,6 @@ export class ProjectsComponent {
 
   openModal(project: Project) {
     this.projectOutput = project;
-    console.log('componente principal', project);
     // Configuración del Overlay
     const config = new OverlayConfig({
       positionStrategy: this.overlay
@@ -58,7 +57,9 @@ export class ProjectsComponent {
         .global()
         .centerHorizontally()
         .centerVertically(),
-      hasBackdrop: false,
+      hasBackdrop: true,
+      backdropClass: 'var(--dark);',
+      scrollStrategy: this.overlay.scrollStrategies.block(),
     });
 
     this.overlayRef = this.overlay.create(config);
@@ -67,7 +68,7 @@ export class ProjectsComponent {
 
   closeOverlay() {
     if (this.overlayRef) {
-      this.overlayRef.dispose(); // 🔥 Cierra el overlay cuando el hijo emite el evento
+      this.overlayRef.dispose();
     }
   }
 }

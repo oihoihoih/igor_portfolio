@@ -4,7 +4,6 @@ import {
   HostBinding,
   AfterViewInit,
   OnInit,
-  Injector,
   Output,
   EventEmitter,
 } from '@angular/core';
@@ -41,11 +40,9 @@ export class ProjectTrailerComponent implements OnInit, AfterViewInit {
   // Para incrustar el vídeo de youtube
   sanitizedVideoUrl!: SafeResourceUrl;
 
-  constructor(private sanitizer: DomSanitizer, private inj: Injector) {}
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    console.log(this.project.trailerUrl);
-
     if (this.project.trailerUrl) {
       this.sanitizedVideoUrl = this.sanitizeUrl(this.project.trailerUrl);
     }
@@ -58,12 +55,15 @@ export class ProjectTrailerComponent implements OnInit, AfterViewInit {
   sanitizeUrl(url: string): SafeResourceUrl {
     const videoId = this.extractVideoId(url);
     const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    console.log(embedUrl);
     return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
   extractVideoId(url: string): string {
+    console.log(url);
     const regex = /[?&]v=([^&#]*)/;
     const match = url.match(regex);
+    console.log(match);
     return match ? match[1] : '';
   }
 
