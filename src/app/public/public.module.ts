@@ -12,6 +12,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ProjectTrailerComponent } from './pages/projects/project-trailer/project-trailer.component';
+import { GameComponent } from './shared/game/game.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ProjectTrailerComponent } from './pages/projects/project-trailer/projec
     ContactComponent,
     ProjectsComponent,
     ProjectTrailerComponent,
+    GameComponent,
   ],
   imports: [CommonModule, PublicRoutingModule, OverlayModule, PortalModule],
   exports: [],

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { isAuthenticated } from './auth/guards/is-authenticated.guard';
 import { isNotAuthenticated } from './auth/guards';
+import { GameComponent } from './public/shared/game/game.component';
 
 const routes: Routes = [
   // {
