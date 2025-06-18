@@ -1,5 +1,5 @@
 .game {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   width: 100%;
   height: 200px;
   border: 1px solid white;
@@ -7,14 +7,13 @@
   position: relative;
 }
 
-#igor {
+.igor {
   width: 60px;
   height: 101px;
-  background-image: url(../../../../assets/images/igor.png);
-  background-size: 60px 101px;
+  background: url(../../../../assets/images/igor-frames.png) repeat-x -11px -3px;
   position: absolute;
-  bottom: 0;
-  left: 50px;
+  bottom: 10px;
+  left: 20px;
 }
 
 #tripode1 {
@@ -23,13 +22,38 @@
   background-image: url(../../../../assets/images/tripode2.png);
   background-size: 12px 54px;
   position: absolute;
-  bottom: 0;
+  bottom: 10px;
   left: calc(100% - 12px);
+}
+
+.tripode1-animation {
   animation: move 2s linear infinite;
+
+  @media screen and (max-width: 600px) {
+    animation: move 1.25s linear infinite;
+    width: 8px;
+  }
+}
+
+#suelo {
+  width: 200%;
+  height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: url(../../../../assets/images/suelo.png) repeat-x 0px 0px;
+}
+
+.igor-running {
+  animation: run 0.25s steps(2) infinite;
 }
 
 .jump {
   animation: jump 0.5s linear;
+}
+
+.pause {
+  animation-play-state: paused !important;
 }
 
 @keyframes jump {
@@ -53,9 +77,18 @@
 
 @keyframes move {
   0% {
-    left: calc(100% - 80px);
+    left: calc(100% - 12px);
   }
   100% {
     left: 0px;
+  }
+}
+
+@keyframes run {
+  from {
+    background-position-x: -11px;
+  }
+  to {
+    background-position-x: 172%;
   }
 }

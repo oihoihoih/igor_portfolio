@@ -1,4 +1,11 @@
 <div class="game">
-  <div #igor id="igor"></div>
+  <div #suelo id="suelo"></div>
+  <div #igor id="igor" class="igor"></div>
   <div #tripode1 id="tripode1"></div>
+
+  <app-game-overlay
+    [gameStopped]="gameOver"
+    [gameStarting]="gameStarting"
+    (startGame)="startGame()"
+  ></app-game-overlay>
 </div>

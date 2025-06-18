@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'app-game',
@@ -10,20 +10,57 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 export class GameComponent implements OnInit {
   @ViewChild('igor', { static: true }) igorRef!: ElementRef;
   @ViewChild('tripode1', { static: true }) tripode1Ref!: ElementRef;
+  @ViewChild('suelo', { static: true }) sueloRef!: ElementRef;
 
   private isAliveInterval: any;
+  gameOver: boolean = false;
+  gameStarting: boolean = true;
 
   constructor() {}
 
   ngOnInit(): void {
+    this.gameStarting = true;
+  }
+
+  ngOnDestroy(): void {
+    this.stopGame();
+  }
+
+  startGame(): void {
+    this.gameStarting = false;
+    this.gameOver = false;
+    const igor = this.igorRef.nativeElement;
+    const tripode1 = this.tripode1Ref.nativeElement;
+
+    // Parar animaciones previas y limpiar clases
+    tripode1.classList.remove('pause');
+    tripode1.classList.remove('tripode1-animation');
+    igor.classList.remove('pause');
+
+    // Reiniciar posición del trípode
+    tripode1.style.left = 'calc(100% - 12px)';
+
+    // Forzar el reflow
+    void tripode1.offsetWidth;
+
+    // Reiniciar animaciones
+    tripode1.classList.add('tripode1-animation');
+    igor.classList.add('igor-running');
+
+    // Reinicia el intervalo y el listener
     this.isAliveInterval = setInterval(() => this.checkCollision(), 10);
     document.addEventListener('keydown', this.keydownHandler);
   }
 
-  ngOnDestroy(): void {
+  stopGame() {
+    this.gameOver = true;
     clearInterval(this.isAliveInterval);
     document.removeEventListener('keydown', this.keydownHandler);
+
+    this.tripode1Ref.nativeElement.classList.add('pause');
+    this.igorRef.nativeElement.classList.add('pause');
   }
+
   private checkCollision(): void {
     const igor = this.igorRef.nativeElement;
     const tripode1 = this.tripode1Ref.nativeElement;
@@ -35,11 +72,11 @@ export class GameComponent implements OnInit {
       .getPropertyValue('left');
 
     if (
-      parseInt(tripode1Left) < 110 &&
-      parseInt(tripode1Left) > 60 &&
+      parseInt(tripode1Left) < 70 &&
+      parseInt(tripode1Left) > 30 &&
       parseInt(igorBottom) <= 46 // Ajusta según salto
     ) {
-      alert('Game Over');
+      this.stopGame();
     }
   }
 
@@ -50,7 +87,6 @@ export class GameComponent implements OnInit {
   };
 
   jump() {
-    console.log('jump');
     const igor = this.igorRef.nativeElement;
     igor.classList.remove('jump');
     void igor.offsetWidth;
