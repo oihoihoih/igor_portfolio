@@ -1,13 +1,13 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { DashService } from '../../services/dash.service';
-import { Project } from '../../../model/project';
+import { Project } from '../../../models/project';
 
 @Component({
-    selector: 'app-dash-project-list',
-    templateUrl: './dash-project-list.component.html',
-    styleUrl: './dash-project-list.component.css',
-    standalone: false
+  selector: 'app-dash-project-list',
+  templateUrl: './dash-project-list.component.html',
+  styleUrl: './dash-project-list.component.css',
+  standalone: false,
 })
 export class DashProjectListComponent {
   public projects: Project[] = [];

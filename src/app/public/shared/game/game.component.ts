@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
+import { Tripode } from '../../../models/tripode';
 
 @Component({
   selector: 'app-game',
@@ -9,10 +10,14 @@ import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 })
 export class GameComponent implements OnInit {
   @ViewChild('igor', { static: true }) igorRef!: ElementRef;
-  @ViewChild('tripode1', { static: true }) tripode1Ref!: ElementRef;
   @ViewChild('suelo', { static: true }) sueloRef!: ElementRef;
 
+  score: number = 0;
+  tripodes: Tripode[] = [];
+  private nextTripodeId: number = 0;
+  private tripodeTimeout: any;
   private isAliveInterval: any;
+  private scoreInterval: any;
   gameOver: boolean = false;
   gameStarting: boolean = true;
 
@@ -27,57 +32,78 @@ export class GameComponent implements OnInit {
   }
 
   startGame(): void {
+    this.score = 0;
     this.gameStarting = false;
     this.gameOver = false;
+    this.tripodes = [];
+    this.nextTripodeId = 0;
+
     const igor = this.igorRef.nativeElement;
-    const tripode1 = this.tripode1Ref.nativeElement;
+    const suelo = this.sueloRef.nativeElement;
 
     // Parar animaciones previas y limpiar clases
-    tripode1.classList.remove('pause');
-    tripode1.classList.remove('tripode1-animation');
-    igor.classList.remove('pause');
-
-    // Reiniciar posición del trípode
-    tripode1.style.left = 'calc(100% - 12px)';
-
-    // Forzar el reflow
-    void tripode1.offsetWidth;
-
-    // Reiniciar animaciones
-    tripode1.classList.add('tripode1-animation');
+    suelo.classList.remove('pause', 'suelo-animation');
+    igor.classList.remove('pause', 'ko');
+    suelo.classList.add('suelo-animation');
     igor.classList.add('igor-running');
 
-    // Reinicia el intervalo y el listener
-    this.isAliveInterval = setInterval(() => this.checkCollision(), 10);
+    this.isAliveInterval = setInterval(() => {
+      this.updateTripodes();
+      this.checkCollision();
+    }, 10);
+
     document.addEventListener('keydown', this.keydownHandler);
+
+    this.scoreInterval = setInterval(() => {
+      this.score++;
+    }, 1000);
+
+    this.launchTripode();
   }
 
   stopGame() {
     this.gameOver = true;
+    clearInterval(this.scoreInterval);
     clearInterval(this.isAliveInterval);
+    clearTimeout(this.tripodeTimeout);
     document.removeEventListener('keydown', this.keydownHandler);
 
-    this.tripode1Ref.nativeElement.classList.add('pause');
-    this.igorRef.nativeElement.classList.add('pause');
+    this.igorRef.nativeElement.classList.add('pause', 'ko');
+    this.sueloRef.nativeElement.classList.add('pause');
+  }
+
+  private launchTripode(): void {
+    const id = this.nextTripodeId++;
+    // El 100 representa el procentaje desde la izquierda (fuera de pantalla)
+    this.tripodes.push({ id, left: 100, animating: true });
+
+    // Programa el siguiente trípode con reatraso aleatorio
+    const randomTime = 800 + Math.random() * 1200;
+    this.tripodeTimeout = setTimeout(() => {
+      if (!this.gameOver) {
+        this.launchTripode();
+      }
+    }, randomTime);
+  }
+
+  private updateTripodes(): void {
+    this.tripodes.forEach((tripode) => {
+      tripode.left -= 0.5; // Ajusta la velocidad aquí
+    });
+    this.tripodes = this.tripodes.filter((tripode) => tripode.left > -10);
   }
 
   private checkCollision(): void {
     const igor = this.igorRef.nativeElement;
-    const tripode1 = this.tripode1Ref.nativeElement;
+    const igorBottom = parseInt(
+      window.getComputedStyle(igor).getPropertyValue('bottom')
+    );
 
-    const igorBottom = window.getComputedStyle(igor).getPropertyValue('bottom');
-
-    const tripode1Left = window
-      .getComputedStyle(tripode1)
-      .getPropertyValue('left');
-
-    if (
-      parseInt(tripode1Left) < 70 &&
-      parseInt(tripode1Left) > 30 &&
-      parseInt(igorBottom) <= 46 // Ajusta según salto
-    ) {
-      this.stopGame();
-    }
+    this.tripodes.forEach((tripode) => {
+      if (tripode.left < 5 && tripode.left > 4 && igorBottom <= 46) {
+        this.stopGame();
+      }
+    });
   }
 
   private keydownHandler = (event: KeyboardEvent) => {

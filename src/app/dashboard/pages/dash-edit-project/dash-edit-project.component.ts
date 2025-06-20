@@ -2,13 +2,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DashService } from '../../services/dash.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Project } from '../../../model/project';
+import { Project } from '../../../models/project';
 
 @Component({
-    selector: 'app-dash-edit-project',
-    templateUrl: './dash-edit-project.component.html',
-    styleUrl: './dash-edit-project.component.css',
-    standalone: false
+  selector: 'app-dash-edit-project',
+  templateUrl: './dash-edit-project.component.html',
+  styleUrl: './dash-edit-project.component.css',
+  standalone: false,
 })
 export class DashEditProjectComponent {
   public editProjectForm!: FormGroup;

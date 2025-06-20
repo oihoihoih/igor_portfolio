@@ -1,12 +1,8 @@
 <div class="overlay-container">
-  <div class="overlay">
-    @if(gameStarting){
-    <button (click)="onStart()" class="start-button">Start</button>
-    } @else if (gameStopped) {
-
-    <p class="start-button">Game Over</p>
-    <button (click)="onStart()" class="reiniciar-button">Reiniciar</button>
-
-    }
-  </div>
+  @if(gameStarting){
+  <button (click)="onStart()" class="big-text">Start</button>
+  } @else if (gameStopped) {
+  <p class="big-text">Game Over</p>
+  <button (click)="onStart()" class="restart-button"></button>
+  }
 </div>

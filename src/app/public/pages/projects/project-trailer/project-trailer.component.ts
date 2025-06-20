@@ -7,7 +7,7 @@ import {
   Output,
   EventEmitter,
 } from '@angular/core';
-import { Project } from '../../../../model/project';
+import { Project } from '../../../../models/project';
 import {
   animate,
   state,

@@ -1,11 +1,19 @@
 <div class="game">
-  <div #suelo id="suelo"></div>
-  <div #igor id="igor" class="igor"></div>
-  <div #tripode1 id="tripode1"></div>
-
   <app-game-overlay
     [gameStopped]="gameOver"
     [gameStarting]="gameStarting"
     (startGame)="startGame()"
   ></app-game-overlay>
+
+  <div class="score">{{ score }}</div>
+  <div #suelo id="suelo"></div>
+  <div #igor id="igor" class="igor"></div>
+  <div
+    #tripode
+    id="tripode"
+    *ngFor="let tripode of tripodes"
+    class="tripode"
+    [style.left.%]="tripode.left"
+    [attr.data-id]="tripode.id"
+  ></div>
 </div>

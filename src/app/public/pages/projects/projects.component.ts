@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { DashService } from '../../../dashboard/services/dash.service';
-import { Project } from '../../../model/project';
+import { Project } from '../../../models/project';
 import { SlideInOutAnimation } from '../../animations';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';

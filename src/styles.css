@@ -1,5 +1,6 @@
 /* Import Overlay cdk */
 @import "@angular/cdk/overlay-prebuilt.css";
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
 
 /* Import Tailwind CSS */
 @tailwind base;

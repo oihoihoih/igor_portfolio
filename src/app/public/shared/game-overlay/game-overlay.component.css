@@ -1,23 +1,26 @@
-@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
-
-.overlay-container,
-.overlay {
+.overlay-container {
+  width: 100%;
+  height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
 }
 
-.overlay {
-  flex-direction: column;
-}
-
-.start-button,
-.reiniciar-button {
+.big-text {
   font-family: "Jersey 10", sans-serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 6rem;
   color: var(--accent);
-  padding: 0 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2cap;
+}
+
+.restart-button {
+  background-image: url(../../../../assets/images/restart.png);
+  width: 22px;
+  height: 20px;
 }
